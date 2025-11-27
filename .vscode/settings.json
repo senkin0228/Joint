@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "gpio.h": "c",
+        "stm32g4xx_hal.h": "c"
+    }
+}

@@ -18,13 +18,17 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "dma.h"
+#include "opamp.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include "stm32g4xx_hal_uart_ex.h"
+#include "BspCommUsart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -90,10 +94,15 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART3_UART_Init();
+  MX_ADC1_Init();
+  MX_OPAMP1_Init();
+  MX_OPAMP2_Init();
+  MX_OPAMP3_Init();
   /* USER CODE BEGIN 2 */
-
+    BspUsartInit();
+    
   /* USER CODE END 2 */
-
+   
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -101,10 +110,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-          HAL_GPIO_WritePin(GPIOC, BTNLED_Pin,GPIO_PIN_RESET);
+      HAL_GPIO_WritePin(GPIOC, BTNLED_Pin,GPIO_PIN_RESET);
       HAL_Delay(1000);
-     HAL_GPIO_WritePin(GPIOC, BTNLED_Pin,GPIO_PIN_SET);
+      //BspUsartSendData(UsartInstance3, data, 3);
+      HAL_GPIO_WritePin(GPIOC, BTNLED_Pin,GPIO_PIN_SET);
       HAL_Delay(1000);
+      //BspUsartSendData(UsartInstance3, data, 4);
   }
   /* USER CODE END 3 */
 }
@@ -155,7 +166,14 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+//int fputc(int ch, FILE *f)
+//{
+//  /* Place your implementation of fputc here */
+//  /* e.g. write a character to the USART3 and Loop until the end of transmission */
+//  while((USART3->ISR & 0x40) == 0);
+//  USART3->TDR = (uint8_t)(ch & 0xFF);
+//  return ch;
+//}
 /* USER CODE END 4 */
 
 /**
