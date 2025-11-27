@@ -1,0 +1,952 @@
+T2888 000:157.511   SEGGER J-Link V8.76 Log File
+T2888 000:157.781   DLL Compiled: Oct  8 2025 11:30:23
+T2888 000:157.797   Logging started @ 2025-11-27 03:16
+T2888 000:157.829   Process: C:\Users\senki\AppData\Local\Keil_v5\UV4\UV4.exe
+T2888 000:157.860 - 157.843ms 
+T2888 000:157.877 JLINK_SetWarnOutHandler(...)
+T2888 000:157.882 - 0.006ms 
+T2888 000:157.890 JLINK_OpenEx(...)
+T2888 000:162.315   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T2888 000:163.604   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T2888 000:163.707   Decompressing FW timestamp took 79 us
+T2888 000:170.653   Hardware: V9.60
+T2888 000:170.668   S/N: 20684596
+T2888 000:170.672   OEM: SEGGER
+T2888 000:170.677   Feature(s): GDB, RDI, FlashBP, FlashDL, JFlash
+T2888 000:171.736   Bootloader: (FW returned invalid version)
+T2888 000:173.537   TELNET listener socket opened on port 19021
+T2888 000:173.662   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+T2888 000:173.871   WEBSRV Webserver running on local port 19080
+T2888 000:173.970   Looking for J-Link GUI Server exe at: C:\Users\senki\AppData\Local\Keil_v5\ARM\Segger\JLinkGUIServer.exe
+T2888 000:174.045   Looking for J-Link GUI Server exe at: C:\Program Files\SEGGER\JLink_V876\JLinkGUIServer.exe
+T2888 000:174.078   Forking J-Link GUI Server: C:\Program Files\SEGGER\JLink_V876\JLinkGUIServer.exe
+T2888 000:176.648   J-Link GUI Server info: "J-Link GUI server V8.76 "
+T2888 000:176.895 - 19.000ms returns "O.K."
+T2888 000:176.919 JLINK_GetEmuCaps()
+T2888 000:176.926 - 0.005ms returns 0xB9FF7BBF
+T2888 000:176.941 JLINK_TIF_GetAvailable(...)
+T2888 000:177.219 - 0.278ms 
+T2888 000:177.230 JLINK_SetErrorOutHandler(...)
+T2888 000:177.234 - 0.003ms 
+T2888 000:177.252 JLINK_ExecCommand("ProjectFile = "C:\Space\Cosmos\joint\Joint\MDK-ARM\JLinkSettings.ini"", ...). 
+T2888 000:186.478   Ref file found at: C:\Users\senki\AppData\Local\Keil_v5\ARM\Segger\JLinkDevices.ref
+T2888 000:186.562   REF file references invalid XML file: C:\Program Files\SEGGER\JLink_V876\JLinkDevices.xml
+T2888 000:187.261 - 10.009ms returns 0x00
+T2888 000:187.287 JLINK_ExecCommand("Device = STM32G431CBUx", ...). 
+T2888 000:187.492   Flash bank @ 0x08000000: SFL: Parsing sectorization info from ELF file
+T2888 000:187.500     FlashDevice.SectorInfo[0]: .SectorSize = 0x00000800, .SectorStartAddr = 0x00000000
+T2888 000:187.507   FlashBank @0x08000000: Sectorization info from SFL ELF file ignored because sectorization override from DLL / XML file is active.
+T2888 000:187.566   Device "STM32G431CB" selected.
+T2888 000:187.768 - 0.474ms returns 0x00
+T2888 000:187.777 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T2888 000:187.789   ERROR: Unknown command
+T2888 000:187.795 - 0.012ms returns 0x01
+T2888 000:187.801 JLINK_GetHardwareVersion()
+T2888 000:187.808 - 0.004ms returns 96000
+T2888 000:187.813 JLINK_GetDLLVersion()
+T2888 000:187.818 - 0.004ms returns 87600
+T2888 000:187.823 JLINK_GetOEMString(...)
+T2888 000:187.829 JLINK_GetFirmwareString(...)
+T2888 000:187.833 - 0.004ms 
+T2888 000:187.840 JLINK_GetDLLVersion()
+T2888 000:187.844 - 0.004ms returns 87600
+T2888 000:187.849 JLINK_GetCompileDateTime()
+T2888 000:187.854 - 0.004ms 
+T2888 000:187.860 JLINK_GetFirmwareString(...)
+T2888 000:187.865 - 0.004ms 
+T2888 000:187.870 JLINK_GetHardwareVersion()
+T2888 000:187.874 - 0.004ms returns 96000
+T2888 000:187.880 JLINK_GetSN()
+T2888 000:187.884 - 0.004ms returns 20684596
+T2888 000:187.890 JLINK_GetOEMString(...)
+T2888 000:187.899 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T2888 000:189.420 - 1.522ms returns 0x00
+T2888 000:189.434 JLINK_HasError()
+T2888 000:189.451 JLINK_SetSpeed(5000)
+T2888 000:189.843 - 0.394ms 
+T2888 000:190.124 JLINK_HasError()
+T2888 000:190.132 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T2888 000:190.136 - 0.004ms returns JLINKARM_RESET_TYPE_NORMAL
+T2888 000:190.140 JLINK_Reset()
+T2888 000:190.493   InitTarget() start
+T2888 000:190.508    J-Link Script File: Executing InitTarget()
+T2888 000:190.853   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 000:292.286   Error: Failed to initialize DAP.
+T2888 000:292.378   Can not attach to CPU. Trying connect under reset.
+T2888 000:343.577   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 000:445.273   Error: Failed to initialize DAP.
+T2888 000:445.293   Connecting to CPU via connect under reset failed.
+T2888 000:495.721   
+  ***** Error: 
+T2888 000:495.745   J-Link script file function InitTarget() returned with error code -1
+T2888 000:495.759   InitTarget() end - Took 305ms
+T2888 000:495.779   Connect failed. Resetting via Reset pin and trying again.
+T2888 000:557.212   InitTarget() start
+T2888 000:557.272    J-Link Script File: Executing InitTarget()
+T2888 000:557.750   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 000:659.265   Error: Failed to initialize DAP.
+T2888 000:659.293   Can not attach to CPU. Trying connect under reset.
+T2888 000:710.993   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 000:813.266   Error: Failed to initialize DAP.
+T2888 000:813.288   Connecting to CPU via connect under reset failed.
+T2888 000:864.514   
+  ***** Error: 
+T2888 000:864.572   J-Link script file function InitTarget() returned with error code -1
+T2888 000:864.604   InitTarget() end - Took 307ms
+T2888 000:864.624 - 674.482ms 
+T2888 000:864.677 JLINK_GetId()
+T2888 000:865.190   InitTarget() start
+T2888 000:865.213    J-Link Script File: Executing InitTarget()
+T2888 000:865.667   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 000:967.536   Error: Failed to initialize DAP.
+T2888 000:967.566   Can not attach to CPU. Trying connect under reset.
+T2888 001:018.988   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 001:121.286   Error: Failed to initialize DAP.
+T2888 001:121.306   Connecting to CPU via connect under reset failed.
+T2888 001:171.846   
+  ***** Error: 
+T2888 001:171.927   J-Link script file function InitTarget() returned with error code -1
+T2888 001:171.967   InitTarget() end - Took 306ms
+T2888 001:171.996   Connect failed. Resetting via Reset pin and trying again.
+T2888 001:234.372   InitTarget() start
+T2888 001:234.459    J-Link Script File: Executing InitTarget()
+T2888 001:234.905   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 001:336.469   Error: Failed to initialize DAP.
+T2888 001:336.491   Can not attach to CPU. Trying connect under reset.
+T2888 001:388.151   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 001:490.453   Error: Failed to initialize DAP.
+T2888 001:490.477   Connecting to CPU via connect under reset failed.
+T2888 001:540.964   
+  ***** Error: 
+T2888 001:541.021   J-Link script file function InitTarget() returned with error code -1
+T2888 001:541.053   InitTarget() end - Took 306ms
+T2888 001:541.073 - 676.394ms returns 0x00000000
+T2888 001:541.129 JLINK_GetId()
+T2888 001:541.557   InitTarget() start
+T2888 001:541.581    J-Link Script File: Executing InitTarget()
+T2888 001:542.011   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 001:644.550   Error: Failed to initialize DAP.
+T2888 001:644.572   Can not attach to CPU. Trying connect under reset.
+T2888 001:696.056   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 001:798.316   Error: Failed to initialize DAP.
+T2888 001:798.352   Connecting to CPU via connect under reset failed.
+T2888 001:849.004   
+  ***** Error: 
+T2888 001:849.076   J-Link script file function InitTarget() returned with error code -1
+T2888 001:849.108   InitTarget() end - Took 307ms
+T2888 001:849.129   Connect failed. Resetting via Reset pin and trying again.
+T2888 001:911.492   InitTarget() start
+T2888 001:911.531    J-Link Script File: Executing InitTarget()
+T2888 001:911.895   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 002:014.312   Error: Failed to initialize DAP.
+T2888 002:014.340   Can not attach to CPU. Trying connect under reset.
+T2888 002:065.442   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 002:167.434   Error: Failed to initialize DAP.
+T2888 002:167.460   Connecting to CPU via connect under reset failed.
+T2888 002:217.934   
+  ***** Error: 
+T2888 002:217.988   J-Link script file function InitTarget() returned with error code -1
+T2888 002:218.020   InitTarget() end - Took 306ms
+T2888 002:218.040 - 676.909ms returns 0x00000000
+T2888 002:224.090 JLINK_GetFirmwareString(...)
+T2888 002:224.106 - 0.015ms 
+T2888 040:900.516 JLINK_GetDLLVersion()
+T2888 040:900.540 - 0.024ms returns 87600
+T2888 040:900.544 JLINK_CORE_GetFound()
+T2888 040:900.908   InitTarget() start
+T2888 040:900.916    J-Link Script File: Executing InitTarget()
+T2888 040:901.268   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 041:003.208   Error: Failed to initialize DAP.
+T2888 041:003.240   Can not attach to CPU. Trying connect under reset.
+T2888 041:054.264   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 041:156.220   Error: Failed to initialize DAP.
+T2888 041:156.240   Connecting to CPU via connect under reset failed.
+T2888 041:207.332   
+  ***** Error: 
+T2888 041:207.356   J-Link script file function InitTarget() returned with error code -1
+T2888 041:207.368   InitTarget() end - Took 306ms
+T2888 041:207.380   Connect failed. Resetting via Reset pin and trying again.
+T2888 041:268.896   InitTarget() start
+T2888 041:268.976    J-Link Script File: Executing InitTarget()
+T2888 041:269.612   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 041:371.968   Error: Failed to initialize DAP.
+T2888 041:371.988   Can not attach to CPU. Trying connect under reset.
+T2888 041:423.176   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 041:524.976   Error: Failed to initialize DAP.
+T2888 041:525.056   Connecting to CPU via connect under reset failed.
+T2888 041:575.572   
+  ***** Error: 
+T2888 041:575.644   J-Link script file function InitTarget() returned with error code -1
+T2888 041:575.676   InitTarget() end - Took 306ms
+T2888 041:575.696 - 675.150ms returns 0x00
+T2888 041:576.332 JLINK_GetDebugInfo(0x100 = JLINKARM_ROM_TABLE_ADDR_INDEX)
+T2888 041:576.684   InitTarget() start
+T2888 041:576.708    J-Link Script File: Executing InitTarget()
+T2888 041:577.032   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 041:678.952   Error: Failed to initialize DAP.
+T2888 041:678.972   Can not attach to CPU. Trying connect under reset.
+T2888 041:730.584   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 041:833.316   Error: Failed to initialize DAP.
+T2888 041:833.368   Connecting to CPU via connect under reset failed.
+T2888 041:883.768   
+  ***** Error: 
+T2888 041:883.792   J-Link script file function InitTarget() returned with error code -1
+T2888 041:883.804   InitTarget() end - Took 307ms
+T2888 041:883.816   Connect failed. Resetting via Reset pin and trying again.
+T2888 041:945.732   InitTarget() start
+T2888 041:945.752    J-Link Script File: Executing InitTarget()
+T2888 041:946.168   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 042:047.972   Error: Failed to initialize DAP.
+T2888 042:048.000   Can not attach to CPU. Trying connect under reset.
+T2888 042:098.796   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 042:201.088   Error: Failed to initialize DAP.
+T2888 042:201.108   Connecting to CPU via connect under reset failed.
+T2888 042:252.244   
+  ***** Error: 
+T2888 042:252.264   J-Link script file function InitTarget() returned with error code -1
+T2888 042:252.280   InitTarget() end - Took 306ms
+T2888 042:252.288 - 675.955ms returns -1
+T2888 042:252.308 JLINK_GetDebugInfo(0x01 = Unknown)
+T2888 042:252.728   InitTarget() start
+T2888 042:252.776    J-Link Script File: Executing InitTarget()
+T2888 042:253.160   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 042:354.968   Error: Failed to initialize DAP.
+T2888 042:354.984   Can not attach to CPU. Trying connect under reset.
+T2888 042:405.832   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 042:508.488   Error: Failed to initialize DAP.
+T2888 042:508.516   Connecting to CPU via connect under reset failed.
+T2888 042:559.832   
+  ***** Error: 
+T2888 042:559.872   J-Link script file function InitTarget() returned with error code -1
+T2888 042:559.884   InitTarget() end - Took 307ms
+T2888 042:559.892   Connect failed. Resetting via Reset pin and trying again.
+T2888 042:621.336   InitTarget() start
+T2888 042:621.392    J-Link Script File: Executing InitTarget()
+T2888 042:621.888   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 042:724.008   Error: Failed to initialize DAP.
+T2888 042:724.032   Can not attach to CPU. Trying connect under reset.
+T2888 042:775.816   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 042:878.232   Error: Failed to initialize DAP.
+T2888 042:878.256   Connecting to CPU via connect under reset failed.
+T2888 042:928.896   
+  ***** Error: 
+T2888 042:928.948   J-Link script file function InitTarget() returned with error code -1
+T2888 042:928.980   InitTarget() end - Took 307ms
+T2888 042:929.000 - 676.690ms returns -1
+T2888 042:929.040 JLINK_GetDeviceFamily
+T2888 042:929.052 - 0.012ms returns 0
+T2888 042:929.076 JLINK_GetDebugInfo(0x01 = Unknown)
+T2888 042:929.488   InitTarget() start
+T2888 042:929.496    J-Link Script File: Executing InitTarget()
+T2888 042:929.792   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 043:032.224   Error: Failed to initialize DAP.
+T2888 043:032.248   Can not attach to CPU. Trying connect under reset.
+T2888 043:083.500   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 043:185.980   Error: Failed to initialize DAP.
+T2888 043:186.004   Connecting to CPU via connect under reset failed.
+T2888 043:237.172   
+  ***** Error: 
+T2888 043:237.240   J-Link script file function InitTarget() returned with error code -1
+T2888 043:237.272   InitTarget() end - Took 307ms
+T2888 043:237.288   Connect failed. Resetting via Reset pin and trying again.
+T2888 043:298.964   InitTarget() start
+T2888 043:299.040    J-Link Script File: Executing InitTarget()
+T2888 043:299.560   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 043:402.112   Error: Failed to initialize DAP.
+T2888 043:402.136   Can not attach to CPU. Trying connect under reset.
+T2888 043:453.048   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 043:555.236   Error: Failed to initialize DAP.
+T2888 043:555.260   Connecting to CPU via connect under reset failed.
+T2888 043:606.452   
+  ***** Error: 
+T2888 043:606.524   J-Link script file function InitTarget() returned with error code -1
+T2888 043:606.556   InitTarget() end - Took 307ms
+T2888 043:606.580 - 677.503ms returns -1
+T2888 043:606.624 JLINK_GetDeviceFamily
+T2888 043:606.636 - 0.012ms returns 0
+T2888 043:606.660 JLINK_GetDebugInfo(0x10F = JLINKARM_DEBUG_INFO_HAS_CORTEX_M_SECURITY_EXT_INDEX)
+T2888 043:607.160   InitTarget() start
+T2888 043:607.164    J-Link Script File: Executing InitTarget()
+T2888 043:607.508   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 043:708.880   Error: Failed to initialize DAP.
+T2888 043:708.952   Can not attach to CPU. Trying connect under reset.
+T2888 043:760.088   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 043:862.268   Error: Failed to initialize DAP.
+T2888 043:862.296   Connecting to CPU via connect under reset failed.
+T2888 043:912.984   
+  ***** Error: 
+T2888 043:913.012   J-Link script file function InitTarget() returned with error code -1
+T2888 043:913.028   InitTarget() end - Took 305ms
+T2888 043:913.036   Connect failed. Resetting via Reset pin and trying again.
+T2888 043:974.836   InitTarget() start
+T2888 043:974.904    J-Link Script File: Executing InitTarget()
+T2888 043:976.056   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 044:078.256   Error: Failed to initialize DAP.
+T2888 044:078.284   Can not attach to CPU. Trying connect under reset.
+T2888 044:129.532   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 044:231.896   Error: Failed to initialize DAP.
+T2888 044:231.960   Connecting to CPU via connect under reset failed.
+T2888 044:283.044   
+  ***** Error: 
+T2888 044:283.064   J-Link script file function InitTarget() returned with error code -1
+T2888 044:283.080   InitTarget() end - Took 308ms
+T2888 044:283.084 - 676.426ms returns -1
+T2888 119:137.128 JLINK_SetSpeed(50000)
+T2888 119:137.520 - 0.391ms 
+T2888 119:137.536 JLINK_HasError()
+T2888 119:137.536 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 119:137.552   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 119:137.968   InitTarget() start
+T2888 119:137.984    J-Link Script File: Executing InitTarget()
+T2888 119:138.288   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 119:240.448   Error: Failed to initialize DAP.
+T2888 119:240.512   Can not attach to CPU. Trying connect under reset.
+T2888 119:291.536   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 119:393.320   Error: Failed to initialize DAP.
+T2888 119:393.344   Connecting to CPU via connect under reset failed.
+T2888 119:444.392   
+  ***** Error: 
+T2888 119:444.416   J-Link script file function InitTarget() returned with error code -1
+T2888 119:444.432   InitTarget() end - Took 306ms
+T2888 119:444.440   Connect failed. Resetting via Reset pin and trying again.
+T2888 119:506.024   InitTarget() start
+T2888 119:506.096    J-Link Script File: Executing InitTarget()
+T2888 119:506.712   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 119:618.304   Error: Failed to initialize DAP.
+T2888 119:618.320   Can not attach to CPU. Trying connect under reset.
+T2888 119:669.424   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 119:771.472   Error: Failed to initialize DAP.
+T2888 119:771.496   Connecting to CPU via connect under reset failed.
+T2888 119:822.128   
+  ***** Error: 
+T2888 119:822.168   J-Link script file function InitTarget() returned with error code -1
+T2888 119:822.192   InitTarget() end - Took 316ms
+T2888 119:822.224 - 684.676ms returns 0xFFFFFFFF
+T2888 119:822.256 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 119:822.760   InitTarget() start
+T2888 119:822.768    J-Link Script File: Executing InitTarget()
+T2888 119:823.168   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 119:925.296   Error: Failed to initialize DAP.
+T2888 119:925.312   Can not attach to CPU. Trying connect under reset.
+T2888 119:976.912   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 120:079.552   Error: Failed to initialize DAP.
+T2888 120:079.576   Connecting to CPU via connect under reset failed.
+T2888 120:130.128   
+  ***** Error: 
+T2888 120:130.152   J-Link script file function InitTarget() returned with error code -1
+T2888 120:130.160   InitTarget() end - Took 307ms
+T2888 120:130.176   Connect failed. Resetting via Reset pin and trying again.
+T2888 120:191.680   InitTarget() start
+T2888 120:191.720    J-Link Script File: Executing InitTarget()
+T2888 120:192.128   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 120:294.184   Error: Failed to initialize DAP.
+T2888 120:294.208   Can not attach to CPU. Trying connect under reset.
+T2888 120:345.624   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 120:447.656   Error: Failed to initialize DAP.
+T2888 120:447.720   Connecting to CPU via connect under reset failed.
+T2888 120:498.088   
+  ***** Error: 
+T2888 120:498.112   J-Link script file function InitTarget() returned with error code -1
+T2888 120:498.128   InitTarget() end - Took 306ms
+T2888 120:498.136 - 675.877ms returns 1
+T2888 120:498.160 JLINK_SetSpeed(33000)
+T2888 120:498.536 - 0.374ms 
+T2888 120:498.560 JLINK_HasError()
+T2888 120:499.072 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 120:499.088   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 120:499.432   InitTarget() start
+T2888 120:499.440    J-Link Script File: Executing InitTarget()
+T2888 120:499.824   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 120:601.048   Error: Failed to initialize DAP.
+T2888 120:601.064   Can not attach to CPU. Trying connect under reset.
+T2888 120:652.456   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 120:754.176   Error: Failed to initialize DAP.
+T2888 120:754.200   Connecting to CPU via connect under reset failed.
+T2888 120:805.504   
+  ***** Error: 
+T2888 120:805.552   J-Link script file function InitTarget() returned with error code -1
+T2888 120:805.592   InitTarget() end - Took 306ms
+T2888 120:805.608   Connect failed. Resetting via Reset pin and trying again.
+T2888 120:867.328   InitTarget() start
+T2888 120:868.568    J-Link Script File: Executing InitTarget()
+T2888 120:869.008   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 120:971.304   Error: Failed to initialize DAP.
+T2888 120:971.328   Can not attach to CPU. Trying connect under reset.
+T2888 121:023.168   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 121:125.328   Error: Failed to initialize DAP.
+T2888 121:125.336   Connecting to CPU via connect under reset failed.
+T2888 121:175.808   
+  ***** Error: 
+T2888 121:175.832   J-Link script file function InitTarget() returned with error code -1
+T2888 121:175.848   InitTarget() end - Took 307ms
+T2888 121:175.848 - 676.780ms returns 0xFFFFFFFF
+T2888 121:175.872 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 121:176.208   InitTarget() start
+T2888 121:176.216    J-Link Script File: Executing InitTarget()
+T2888 121:176.576   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 121:278.440   Error: Failed to initialize DAP.
+T2888 121:278.464   Can not attach to CPU. Trying connect under reset.
+T2888 121:330.320   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 121:432.320   Error: Failed to initialize DAP.
+T2888 121:432.344   Connecting to CPU via connect under reset failed.
+T2888 121:483.184   
+  ***** Error: 
+T2888 121:483.216   J-Link script file function InitTarget() returned with error code -1
+T2888 121:483.224   InitTarget() end - Took 306ms
+T2888 121:483.240   Connect failed. Resetting via Reset pin and trying again.
+T2888 121:545.512   InitTarget() start
+T2888 121:545.520    J-Link Script File: Executing InitTarget()
+T2888 121:546.008   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 121:647.320   Error: Failed to initialize DAP.
+T2888 121:647.336   Can not attach to CPU. Trying connect under reset.
+T2888 121:698.960   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 121:801.064   Error: Failed to initialize DAP.
+T2888 121:801.088   Connecting to CPU via connect under reset failed.
+T2888 121:851.728   
+  ***** Error: 
+T2888 121:851.752   J-Link script file function InitTarget() returned with error code -1
+T2888 121:851.760   InitTarget() end - Took 306ms
+T2888 121:851.760 - 675.891ms returns 1
+T2888 121:851.792 JLINK_SetSpeed(25000)
+T2888 121:852.072 - 0.286ms 
+T2888 121:852.096 JLINK_HasError()
+T2888 121:852.592 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 121:852.608   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 121:853.032   InitTarget() start
+T2888 121:853.040    J-Link Script File: Executing InitTarget()
+T2888 121:853.400   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 121:955.184   Error: Failed to initialize DAP.
+T2888 121:955.216   Can not attach to CPU. Trying connect under reset.
+T2888 122:006.080   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 122:108.032   Error: Failed to initialize DAP.
+T2888 122:108.048   Connecting to CPU via connect under reset failed.
+T2888 122:158.568   
+  ***** Error: 
+T2888 122:158.616   J-Link script file function InitTarget() returned with error code -1
+T2888 122:158.656   InitTarget() end - Took 305ms
+T2888 122:158.672   Connect failed. Resetting via Reset pin and trying again.
+T2888 122:220.880   InitTarget() start
+T2888 122:220.904    J-Link Script File: Executing InitTarget()
+T2888 122:221.232   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 122:323.216   Error: Failed to initialize DAP.
+T2888 122:323.240   Can not attach to CPU. Trying connect under reset.
+T2888 122:375.120   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 122:477.416   Error: Failed to initialize DAP.
+T2888 122:477.488   Connecting to CPU via connect under reset failed.
+T2888 122:528.192   
+  ***** Error: 
+T2888 122:528.256   J-Link script file function InitTarget() returned with error code -1
+T2888 122:528.296   InitTarget() end - Took 307ms
+T2888 122:528.304 - 675.709ms returns 0xFFFFFFFF
+T2888 122:528.360 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 122:528.768   InitTarget() start
+T2888 122:528.784    J-Link Script File: Executing InitTarget()
+T2888 122:529.240   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 122:630.960   Error: Failed to initialize DAP.
+T2888 122:630.976   Can not attach to CPU. Trying connect under reset.
+T2888 122:681.920   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 122:783.344   Error: Failed to initialize DAP.
+T2888 122:783.384   Connecting to CPU via connect under reset failed.
+T2888 122:834.432   
+  ***** Error: 
+T2888 122:834.456   J-Link script file function InitTarget() returned with error code -1
+T2888 122:834.472   InitTarget() end - Took 305ms
+T2888 122:834.480   Connect failed. Resetting via Reset pin and trying again.
+T2888 122:896.472   InitTarget() start
+T2888 122:896.496    J-Link Script File: Executing InitTarget()
+T2888 122:896.880   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 122:998.384   Error: Failed to initialize DAP.
+T2888 122:998.440   Can not attach to CPU. Trying connect under reset.
+T2888 123:049.384   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 123:151.232   Error: Failed to initialize DAP.
+T2888 123:151.256   Connecting to CPU via connect under reset failed.
+T2888 123:201.840   
+  ***** Error: 
+T2888 123:201.920   J-Link script file function InitTarget() returned with error code -1
+T2888 123:201.944   InitTarget() end - Took 305ms
+T2888 123:201.968 - 673.615ms returns 1
+T2888 123:202.088 JLINK_SetSpeed(20000)
+T2888 123:202.456 - 0.371ms 
+T2888 123:202.480 JLINK_HasError()
+T2888 123:202.480 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 123:202.480   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 123:202.880   InitTarget() start
+T2888 123:202.896    J-Link Script File: Executing InitTarget()
+T2888 123:203.264   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 123:304.984   Error: Failed to initialize DAP.
+T2888 123:305.000   Can not attach to CPU. Trying connect under reset.
+T2888 123:356.304   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 123:458.352   Error: Failed to initialize DAP.
+T2888 123:458.384   Connecting to CPU via connect under reset failed.
+T2888 123:509.288   
+  ***** Error: 
+T2888 123:509.328   J-Link script file function InitTarget() returned with error code -1
+T2888 123:509.336   InitTarget() end - Took 306ms
+T2888 123:509.336   Connect failed. Resetting via Reset pin and trying again.
+T2888 123:571.352   InitTarget() start
+T2888 123:571.368    J-Link Script File: Executing InitTarget()
+T2888 123:571.752   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 123:673.104   Error: Failed to initialize DAP.
+T2888 123:673.128   Can not attach to CPU. Trying connect under reset.
+T2888 123:724.688   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 123:826.384   Error: Failed to initialize DAP.
+T2888 123:826.408   Connecting to CPU via connect under reset failed.
+T2888 123:877.608   
+  ***** Error: 
+T2888 123:877.616   J-Link script file function InitTarget() returned with error code -1
+T2888 123:877.632   InitTarget() end - Took 306ms
+T2888 123:877.648 - 675.159ms returns 0xFFFFFFFF
+T2888 123:877.672 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 123:878.056   InitTarget() start
+T2888 123:878.064    J-Link Script File: Executing InitTarget()
+T2888 123:878.504   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 123:980.240   Error: Failed to initialize DAP.
+T2888 123:980.264   Can not attach to CPU. Trying connect under reset.
+T2888 124:032.176   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 124:134.384   Error: Failed to initialize DAP.
+T2888 124:134.440   Connecting to CPU via connect under reset failed.
+T2888 124:185.472   
+  ***** Error: 
+T2888 124:185.520   J-Link script file function InitTarget() returned with error code -1
+T2888 124:185.536   InitTarget() end - Took 307ms
+T2888 124:185.552   Connect failed. Resetting via Reset pin and trying again.
+T2888 124:248.472   InitTarget() start
+T2888 124:248.496    J-Link Script File: Executing InitTarget()
+T2888 124:248.896   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 124:350.232   Error: Failed to initialize DAP.
+T2888 124:350.256   Can not attach to CPU. Trying connect under reset.
+T2888 124:401.360   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 124:503.248   Error: Failed to initialize DAP.
+T2888 124:503.280   Connecting to CPU via connect under reset failed.
+T2888 124:553.752   
+  ***** Error: 
+T2888 124:553.776   J-Link script file function InitTarget() returned with error code -1
+T2888 124:553.792   InitTarget() end - Took 305ms
+T2888 124:553.792 - 676.130ms returns 1
+T2888 124:553.816 JLINK_SetSpeed(10000)
+T2888 124:554.128 - 0.306ms 
+T2888 124:554.192 JLINK_HasError()
+T2888 124:555.240 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 124:555.248   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 124:555.672   InitTarget() start
+T2888 124:555.688    J-Link Script File: Executing InitTarget()
+T2888 124:556.120   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 124:658.576   Error: Failed to initialize DAP.
+T2888 124:658.600   Can not attach to CPU. Trying connect under reset.
+T2888 124:710.248   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 124:812.312   Error: Failed to initialize DAP.
+T2888 124:812.352   Connecting to CPU via connect under reset failed.
+T2888 124:863.616   
+  ***** Error: 
+T2888 124:863.664   J-Link script file function InitTarget() returned with error code -1
+T2888 124:863.704   InitTarget() end - Took 307ms
+T2888 124:863.728   Connect failed. Resetting via Reset pin and trying again.
+T2888 124:925.544   InitTarget() start
+T2888 124:925.568    J-Link Script File: Executing InitTarget()
+T2888 124:926.080   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 125:028.336   Error: Failed to initialize DAP.
+T2888 125:028.416   Can not attach to CPU. Trying connect under reset.
+T2888 125:079.744   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 125:181.312   Error: Failed to initialize DAP.
+T2888 125:181.336   Connecting to CPU via connect under reset failed.
+T2888 125:232.192   
+  ***** Error: 
+T2888 125:232.208   J-Link script file function InitTarget() returned with error code -1
+T2888 125:232.216   InitTarget() end - Took 306ms
+T2888 125:232.232 - 676.990ms returns 0xFFFFFFFF
+T2888 125:232.256 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 125:232.752   InitTarget() start
+T2888 125:232.784    J-Link Script File: Executing InitTarget()
+T2888 125:233.280   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 125:335.336   Error: Failed to initialize DAP.
+T2888 125:335.360   Can not attach to CPU. Trying connect under reset.
+T2888 125:386.280   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 125:488.336   Error: Failed to initialize DAP.
+T2888 125:488.368   Connecting to CPU via connect under reset failed.
+T2888 125:539.088   
+  ***** Error: 
+T2888 125:539.112   J-Link script file function InitTarget() returned with error code -1
+T2888 125:539.120   InitTarget() end - Took 306ms
+T2888 125:539.136   Connect failed. Resetting via Reset pin and trying again.
+T2888 125:601.776   InitTarget() start
+T2888 125:601.808    J-Link Script File: Executing InitTarget()
+T2888 125:602.160   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 125:704.344   Error: Failed to initialize DAP.
+T2888 125:704.368   Can not attach to CPU. Trying connect under reset.
+T2888 125:755.880   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 125:858.128   Error: Failed to initialize DAP.
+T2888 125:858.160   Connecting to CPU via connect under reset failed.
+T2888 125:909.552   
+  ***** Error: 
+T2888 125:909.584   J-Link script file function InitTarget() returned with error code -1
+T2888 125:909.592   InitTarget() end - Took 307ms
+T2888 125:909.608 - 677.354ms returns 1
+T2888 125:909.632 JLINK_SetSpeed(5000)
+T2888 125:910.000 - 0.379ms 
+T2888 125:910.016 JLINK_HasError()
+T2888 125:910.064 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 125:910.064   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 125:910.464   InitTarget() start
+T2888 125:910.480    J-Link Script File: Executing InitTarget()
+T2888 125:910.824   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 126:012.648   Error: Failed to initialize DAP.
+T2888 126:012.696   Can not attach to CPU. Trying connect under reset.
+T2888 126:064.040   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 126:166.592   Error: Failed to initialize DAP.
+T2888 126:166.672   Connecting to CPU via connect under reset failed.
+T2888 126:217.576   
+  ***** Error: 
+T2888 126:217.600   J-Link script file function InitTarget() returned with error code -1
+T2888 126:217.616   InitTarget() end - Took 307ms
+T2888 126:217.624   Connect failed. Resetting via Reset pin and trying again.
+T2888 126:279.424   InitTarget() start
+T2888 126:279.448    J-Link Script File: Executing InitTarget()
+T2888 126:279.824   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 126:381.392   Error: Failed to initialize DAP.
+T2888 126:381.464   Can not attach to CPU. Trying connect under reset.
+T2888 126:432.616   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 126:535.344   Error: Failed to initialize DAP.
+T2888 126:535.376   Connecting to CPU via connect under reset failed.
+T2888 126:585.832   
+  ***** Error: 
+T2888 126:585.856   J-Link script file function InitTarget() returned with error code -1
+T2888 126:585.872   InitTarget() end - Took 306ms
+T2888 126:585.872 - 675.806ms returns 0xFFFFFFFF
+T2888 126:585.896 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 126:586.344   InitTarget() start
+T2888 126:586.352    J-Link Script File: Executing InitTarget()
+T2888 126:586.688   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 126:688.360   Error: Failed to initialize DAP.
+T2888 126:688.368   Can not attach to CPU. Trying connect under reset.
+T2888 126:740.136   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 126:842.496   Error: Failed to initialize DAP.
+T2888 126:842.624   Connecting to CPU via connect under reset failed.
+T2888 126:893.760   
+  ***** Error: 
+T2888 126:893.784   J-Link script file function InitTarget() returned with error code -1
+T2888 126:893.808   InitTarget() end - Took 307ms
+T2888 126:893.808   Connect failed. Resetting via Reset pin and trying again.
+T2888 126:956.008   InitTarget() start
+T2888 126:956.032    J-Link Script File: Executing InitTarget()
+T2888 126:956.440   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 127:058.496   Error: Failed to initialize DAP.
+T2888 127:058.536   Can not attach to CPU. Trying connect under reset.
+T2888 127:109.712   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 127:212.160   Error: Failed to initialize DAP.
+T2888 127:212.184   Connecting to CPU via connect under reset failed.
+T2888 127:263.448   
+  ***** Error: 
+T2888 127:263.472   J-Link script file function InitTarget() returned with error code -1
+T2888 127:263.488   InitTarget() end - Took 307ms
+T2888 127:263.504 - 677.608ms returns 1
+T2888 127:263.512 JLINK_SetSpeed(3000)
+T2888 127:263.912 - 0.388ms 
+T2888 127:263.912 JLINK_HasError()
+T2888 127:263.920 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 127:263.920   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 127:264.384   InitTarget() start
+T2888 127:264.400    J-Link Script File: Executing InitTarget()
+T2888 127:264.688   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 127:367.064   Error: Failed to initialize DAP.
+T2888 127:367.088   Can not attach to CPU. Trying connect under reset.
+T2888 127:418.600   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 127:520.752   Error: Failed to initialize DAP.
+T2888 127:520.784   Connecting to CPU via connect under reset failed.
+T2888 127:571.776   
+  ***** Error: 
+T2888 127:571.792   J-Link script file function InitTarget() returned with error code -1
+T2888 127:571.816   InitTarget() end - Took 307ms
+T2888 127:571.816   Connect failed. Resetting via Reset pin and trying again.
+T2888 127:634.576   InitTarget() start
+T2888 127:634.640    J-Link Script File: Executing InitTarget()
+T2888 127:635.160   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 127:737.728   Error: Failed to initialize DAP.
+T2888 127:737.752   Can not attach to CPU. Trying connect under reset.
+T2888 127:789.040   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 127:891.728   Error: Failed to initialize DAP.
+T2888 127:891.752   Connecting to CPU via connect under reset failed.
+T2888 127:942.168   
+  ***** Error: 
+T2888 127:942.224   J-Link script file function InitTarget() returned with error code -1
+T2888 127:942.248   InitTarget() end - Took 307ms
+T2888 127:942.256 - 678.337ms returns 0xFFFFFFFF
+T2888 127:942.272 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 127:942.608   InitTarget() start
+T2888 127:942.616    J-Link Script File: Executing InitTarget()
+T2888 127:942.952   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 128:045.864   Error: Failed to initialize DAP.
+T2888 128:045.888   Can not attach to CPU. Trying connect under reset.
+T2888 128:096.728   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 128:198.592   Error: Failed to initialize DAP.
+T2888 128:198.616   Connecting to CPU via connect under reset failed.
+T2888 128:249.192   
+  ***** Error: 
+T2888 128:249.216   J-Link script file function InitTarget() returned with error code -1
+T2888 128:249.232   InitTarget() end - Took 306ms
+T2888 128:249.232   Connect failed. Resetting via Reset pin and trying again.
+T2888 128:311.064   InitTarget() start
+T2888 128:311.128    J-Link Script File: Executing InitTarget()
+T2888 128:311.656   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 128:414.720   Error: Failed to initialize DAP.
+T2888 128:414.744   Can not attach to CPU. Trying connect under reset.
+T2888 128:466.088   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 128:568.592   Error: Failed to initialize DAP.
+T2888 128:568.616   Connecting to CPU via connect under reset failed.
+T2888 128:619.920   
+  ***** Error: 
+T2888 128:619.968   J-Link script file function InitTarget() returned with error code -1
+T2888 128:620.008   InitTarget() end - Took 308ms
+T2888 128:620.016 - 677.741ms returns 1
+T2888 128:620.120 JLINK_SetSpeed(2000)
+T2888 128:620.432 - 0.313ms 
+T2888 128:620.440 JLINK_HasError()
+T2888 128:620.456 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 128:620.456   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 128:620.904   InitTarget() start
+T2888 128:620.944    J-Link Script File: Executing InitTarget()
+T2888 128:621.336   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 128:723.688   Error: Failed to initialize DAP.
+T2888 128:723.712   Can not attach to CPU. Trying connect under reset.
+T2888 128:774.808   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 128:877.808   Error: Failed to initialize DAP.
+T2888 128:877.840   Connecting to CPU via connect under reset failed.
+T2888 128:928.856   
+  ***** Error: 
+T2888 128:928.920   J-Link script file function InitTarget() returned with error code -1
+T2888 128:928.960   InitTarget() end - Took 307ms
+T2888 128:928.976   Connect failed. Resetting via Reset pin and trying again.
+T2888 128:991.704   InitTarget() start
+T2888 128:991.768    J-Link Script File: Executing InitTarget()
+T2888 128:992.320   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 129:094.824   Error: Failed to initialize DAP.
+T2888 129:094.864   Can not attach to CPU. Trying connect under reset.
+T2888 129:145.640   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 129:249.088   Error: Failed to initialize DAP.
+T2888 129:249.112   Connecting to CPU via connect under reset failed.
+T2888 129:299.792   
+  ***** Error: 
+T2888 129:299.816   J-Link script file function InitTarget() returned with error code -1
+T2888 129:299.824   InitTarget() end - Took 308ms
+T2888 129:299.824 - 679.377ms returns 0xFFFFFFFF
+T2888 129:299.856 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 129:300.240   InitTarget() start
+T2888 129:300.248    J-Link Script File: Executing InitTarget()
+T2888 129:300.608   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 129:403.224   Error: Failed to initialize DAP.
+T2888 129:403.248   Can not attach to CPU. Trying connect under reset.
+T2888 129:454.336   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 129:556.840   Error: Failed to initialize DAP.
+T2888 129:556.864   Connecting to CPU via connect under reset failed.
+T2888 129:607.680   
+  ***** Error: 
+T2888 129:607.704   J-Link script file function InitTarget() returned with error code -1
+T2888 129:607.720   InitTarget() end - Took 307ms
+T2888 129:607.728   Connect failed. Resetting via Reset pin and trying again.
+T2888 129:670.528   InitTarget() start
+T2888 129:670.552    J-Link Script File: Executing InitTarget()
+T2888 129:670.872   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 129:773.968   Error: Failed to initialize DAP.
+T2888 129:773.992   Can not attach to CPU. Trying connect under reset.
+T2888 129:825.832   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 129:928.856   Error: Failed to initialize DAP.
+T2888 129:928.880   Connecting to CPU via connect under reset failed.
+T2888 129:979.824   
+  ***** Error: 
+T2888 129:979.888   J-Link script file function InitTarget() returned with error code -1
+T2888 129:979.920   InitTarget() end - Took 309ms
+T2888 129:979.944 - 680.092ms returns 1
+T2888 129:979.992 JLINK_SetSpeed(1000)
+T2888 129:980.400 - 0.413ms 
+T2888 129:980.440 JLINK_HasError()
+T2888 129:980.480 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 129:980.520   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 129:980.880   InitTarget() start
+T2888 129:980.888    J-Link Script File: Executing InitTarget()
+T2888 129:981.264   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 130:085.904   Error: Failed to initialize DAP.
+T2888 130:085.928   Can not attach to CPU. Trying connect under reset.
+T2888 130:136.832   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 130:240.792   Error: Failed to initialize DAP.
+T2888 130:240.856   Connecting to CPU via connect under reset failed.
+T2888 130:292.056   
+  ***** Error: 
+T2888 130:292.136   J-Link script file function InitTarget() returned with error code -1
+T2888 130:292.176   InitTarget() end - Took 311ms
+T2888 130:292.200   Connect failed. Resetting via Reset pin and trying again.
+T2888 130:354.928   InitTarget() start
+T2888 130:354.960    J-Link Script File: Executing InitTarget()
+T2888 130:355.472   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 130:459.888   Error: Failed to initialize DAP.
+T2888 130:459.920   Can not attach to CPU. Trying connect under reset.
+T2888 130:510.992   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 130:614.888   Error: Failed to initialize DAP.
+T2888 130:614.912   Connecting to CPU via connect under reset failed.
+T2888 130:665.904   
+  ***** Error: 
+T2888 130:666.000   J-Link script file function InitTarget() returned with error code -1
+T2888 130:666.032   InitTarget() end - Took 310ms
+T2888 130:666.064 - 685.582ms returns 0xFFFFFFFF
+T2888 130:667.200 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 130:667.536   InitTarget() start
+T2888 130:667.624    J-Link Script File: Executing InitTarget()
+T2888 130:668.016   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 130:771.632   Error: Failed to initialize DAP.
+T2888 130:771.672   Can not attach to CPU. Trying connect under reset.
+T2888 130:822.680   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 130:926.656   Error: Failed to initialize DAP.
+T2888 130:926.696   Connecting to CPU via connect under reset failed.
+T2888 130:978.280   
+  ***** Error: 
+T2888 130:978.288   J-Link script file function InitTarget() returned with error code -1
+T2888 130:978.320   InitTarget() end - Took 310ms
+T2888 130:978.320   Connect failed. Resetting via Reset pin and trying again.
+T2888 131:040.960   InitTarget() start
+T2888 131:041.024    J-Link Script File: Executing InitTarget()
+T2888 131:041.408   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 131:145.664   Error: Failed to initialize DAP.
+T2888 131:145.688   Can not attach to CPU. Trying connect under reset.
+T2888 131:196.720   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 131:300.976   Error: Failed to initialize DAP.
+T2888 131:301.016   Connecting to CPU via connect under reset failed.
+T2888 131:352.320   
+  ***** Error: 
+T2888 131:352.344   J-Link script file function InitTarget() returned with error code -1
+T2888 131:352.360   InitTarget() end - Took 311ms
+T2888 131:352.368 - 685.165ms returns 1
+T2888 131:352.400 JLINK_SetSpeed(500)
+T2888 131:352.752 - 0.364ms 
+T2888 131:352.832 JLINK_HasError()
+T2888 131:352.832 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 131:352.832   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 131:353.200   InitTarget() start
+T2888 131:353.216    J-Link Script File: Executing InitTarget()
+T2888 131:353.512   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 131:461.592   Error: Failed to initialize DAP.
+T2888 131:461.616   Can not attach to CPU. Trying connect under reset.
+T2888 131:513.456   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 131:621.608   Error: Failed to initialize DAP.
+T2888 131:621.632   Connecting to CPU via connect under reset failed.
+T2888 131:673.112   
+  ***** Error: 
+T2888 131:673.152   J-Link script file function InitTarget() returned with error code -1
+T2888 131:673.168   InitTarget() end - Took 319ms
+T2888 131:673.168   Connect failed. Resetting via Reset pin and trying again.
+T2888 131:734.640   InitTarget() start
+T2888 131:734.720    J-Link Script File: Executing InitTarget()
+T2888 131:735.280   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 131:842.408   Error: Failed to initialize DAP.
+T2888 131:842.472   Can not attach to CPU. Trying connect under reset.
+T2888 131:894.000   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 132:001.488   Error: Failed to initialize DAP.
+T2888 132:001.512   Connecting to CPU via connect under reset failed.
+T2888 132:053.184   
+  ***** Error: 
+T2888 132:053.232   J-Link script file function InitTarget() returned with error code -1
+T2888 132:053.264   InitTarget() end - Took 318ms
+T2888 132:053.264 - 700.430ms returns 0xFFFFFFFF
+T2888 132:053.288 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 132:053.680   InitTarget() start
+T2888 132:053.696    J-Link Script File: Executing InitTarget()
+T2888 132:054.056   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 132:161.280   Error: Failed to initialize DAP.
+T2888 132:161.328   Can not attach to CPU. Trying connect under reset.
+T2888 132:212.752   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 132:320.024   Error: Failed to initialize DAP.
+T2888 132:320.064   Connecting to CPU via connect under reset failed.
+T2888 132:371.536   
+  ***** Error: 
+T2888 132:371.568   J-Link script file function InitTarget() returned with error code -1
+T2888 132:371.584   InitTarget() end - Took 317ms
+T2888 132:371.600   Connect failed. Resetting via Reset pin and trying again.
+T2888 132:433.152   InitTarget() start
+T2888 132:433.176    J-Link Script File: Executing InitTarget()
+T2888 132:433.552   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 132:541.648   Error: Failed to initialize DAP.
+T2888 132:541.672   Can not attach to CPU. Trying connect under reset.
+T2888 132:592.768   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 132:700.480   Error: Failed to initialize DAP.
+T2888 132:700.504   Connecting to CPU via connect under reset failed.
+T2888 132:751.536   
+  ***** Error: 
+T2888 132:751.568   J-Link script file function InitTarget() returned with error code -1
+T2888 132:751.576   InitTarget() end - Took 318ms
+T2888 132:751.592 - 698.300ms returns 1
+T2888 132:751.616 JLINK_SetSpeed(200)
+T2888 132:751.936 - 0.320ms 
+T2888 132:751.936 JLINK_HasError()
+T2888 132:751.952 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 132:751.952   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 132:752.320   InitTarget() start
+T2888 132:752.336    J-Link Script File: Executing InitTarget()
+T2888 132:752.688   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 133:256.960   DAP initialized successfully.
+T2888 133:258.576   Can not attach to CPU. Trying connect under reset.
+T2888 133:310.040   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 133:814.848   DAP initialized successfully.
+T2888 133:816.320   Connecting to CPU via connect under reset failed.
+T2888 133:867.176   
+  ***** Error: 
+T2888 133:867.200   J-Link script file function InitTarget() returned with error code -1
+T2888 133:867.216   InitTarget() end - Took 1.11s
+T2888 133:867.224   Connect failed. Resetting via Reset pin and trying again.
+T2888 133:930.000   InitTarget() start
+T2888 133:930.064    J-Link Script File: Executing InitTarget()
+T2888 133:930.472   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 134:435.360   DAP initialized successfully.
+T2888 134:438.272   Can not attach to CPU. Trying connect under reset.
+T2888 134:489.616   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 134:993.888   DAP initialized successfully.
+T2888 134:995.488   Connecting to CPU via connect under reset failed.
+T2888 135:046.672   
+  ***** Error: 
+T2888 135:046.736   J-Link script file function InitTarget() returned with error code -1
+T2888 135:046.752   InitTarget() end - Took 1.11s
+T2888 135:046.784 - 2294.837ms returns 0xFFFFFFFF
+T2888 135:046.848 JLINK_ReadMem(0x20000000, 0xA Bytes, ...)
+T2888 135:047.344   InitTarget() start
+T2888 135:047.392    J-Link Script File: Executing InitTarget()
+T2888 135:047.760   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 135:553.008   DAP initialized successfully.
+T2888 135:554.496   Can not attach to CPU. Trying connect under reset.
+T2888 135:606.128   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 136:111.520   DAP initialized successfully.
+T2888 136:112.992   Connecting to CPU via connect under reset failed.
+T2888 136:164.000   
+  ***** Error: 
+T2888 136:164.048   J-Link script file function InitTarget() returned with error code -1
+T2888 136:164.064   InitTarget() end - Took 1.11s
+T2888 136:164.064   Connect failed. Resetting via Reset pin and trying again.
+T2888 136:226.496   InitTarget() start
+T2888 136:226.544    J-Link Script File: Executing InitTarget()
+T2888 136:227.008   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 136:733.024   DAP initialized successfully.
+T2888 136:734.512   Can not attach to CPU. Trying connect under reset.
+T2888 136:785.568   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 137:291.408   DAP initialized successfully.
+T2888 137:293.024   Connecting to CPU via connect under reset failed.
+T2888 137:343.600   
+  ***** Error: 
+T2888 137:343.648   J-Link script file function InitTarget() returned with error code -1
+T2888 137:343.696   InitTarget() end - Took 1.11s
+T2888 137:343.712 - 2296.874ms returns 1
+T2888 137:344.256 JLINK_SetSpeed(100)
+T2888 137:344.592 - 0.335ms 
+T2888 137:344.608 JLINK_HasError()
+T2888 137:345.152 JLINK_WriteMem(0x20000000, 0xA Bytes, ...)
+T2888 137:345.168   Data:  55 00 00 00 AA 00 00 00 12 00
+T2888 137:345.504   InitTarget() start
+T2888 137:345.520    J-Link Script File: Executing InitTarget()
+T2888 137:345.888   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 137:481.072   Error: Failed to initialize DAP.
+T2888 137:481.120   Can not attach to CPU. Trying connect under reset.
+T2888 137:532.704   SWD selected. Executing JTAG -> SWD switching sequence.
+T2888 137:668.352   Error: Failed to initialize DAP.
+T2888 137:668.384   Connecting to CPU via connect under reset failed.
+T2888 137:719.664   
+  ***** Error: 
+T2888 137:719.712   J-Link script file function InitTarget() returned with error code -1
+T2888 137:719.760   InitTarget() end - Took 374ms
+T2888 137:719.776   Connect failed. Resetting via Reset pin and trying again.
+T2888 137:782.816   InitTarget() start
+T2888 137:782.832    J-Link Script File: Executing InitTarget()
+T2888 137:783.152   SWD selected. Executing JTAG -> SWD switching sequence.
