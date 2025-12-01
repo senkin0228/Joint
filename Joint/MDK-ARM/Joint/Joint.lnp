@@ -5,6 +5,7 @@
 "joint\adc.o"
 "joint\dma.o"
 "joint\opamp.o"
+"joint\tim.o"
 "joint\usart.o"
 "joint\stm32g4xx_it.o"
 "joint\stm32g4xx_hal_msp.o"

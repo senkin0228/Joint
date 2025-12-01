@@ -21,6 +21,7 @@
 #include "adc.h"
 #include "dma.h"
 #include "opamp.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -98,11 +99,13 @@ int main(void)
   MX_OPAMP1_Init();
   MX_OPAMP2_Init();
   MX_OPAMP3_Init();
+  MX_TIM1_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
     BspUsartInit();
     
   /* USER CODE END 2 */
-   
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
