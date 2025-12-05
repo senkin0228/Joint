@@ -21,15 +21,18 @@ extern uint8_t g_FloatTxData[12];
 void BspAdcInit(void)
 {
     HAL_ADC_MspInit(&hadc1);
-    HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
-    
+    HAL_ADC_MspInit(&hadc2);
 
     HAL_OPAMP_Start(&hopamp1);
 	HAL_OPAMP_Start(&hopamp2);
 	HAL_OPAMP_Start(&hopamp3);
-    HAL_ADCEx_Calibration_Start( &hadc1, ADC_SINGLE_ENDED);
-	HAL_ADCEx_Calibration_Start( &hadc2, ADC_SINGLE_ENDED);
-    
+    HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+	HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);
+    __HAL_ADC_CLEAR_FLAG( &hadc1, ADC_FLAG_JEOC);
+	__HAL_ADC_CLEAR_FLAG( &hadc1, ADC_FLAG_EOC);
+	__HAL_ADC_CLEAR_FLAG( &hadc2, ADC_FLAG_JEOC);
+    HAL_ADCEx_InjectedStart_IT(&hadc1);
+	HAL_ADCEx_InjectedStart(&hadc2);    
 }
 
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)

@@ -20,13 +20,11 @@ void ADC_Process(uint32_t tick)
 {
     if(tick % 20 != 0)
         return;
-
+   
     HAL_ADC_Start(&hadc1);
-    HAL_ADCEx_InjectedStart_IT(&hadc1);
-	HAL_ADCEx_InjectedStart_IT(&hadc2);
-    g_FloatTxData[3] = HAL_ADC_GetValue(&hadc1);  
+	HAL_ADC_Start(&hadc2);
+    g_FloatTxData[3] = HAL_ADC_GetValue(&hadc1)*3.3f/4096.0f;  
     BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 4);
- 
 }
 
 
