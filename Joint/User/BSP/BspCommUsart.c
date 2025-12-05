@@ -8,6 +8,7 @@
 #include "BspCommUsart.h"
 #include "ProtoclOfRingBuffer.h"
 #include "usart.h"
+#include "SEGGER_RTT.h"
 
 extern UART_HandleTypeDef huart3;
 
@@ -84,7 +85,6 @@ void BspUsartClearRxBuffer(UsartInstance_t instance)
 {
     ProtoclRBuffClear(&Bsp_DMA_RB[instance]);
 }
-void SEGGER_RTT_printf(const char * sFormat, ...){};
 
 
 void BspUartSendJustFloatData(UsartInstance_t instance, float *data, uint16_t length)

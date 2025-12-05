@@ -33,6 +33,7 @@
 #include "BspCommUsart.h"
 #include "BspADC.h"
 #include "App_ADC.h"
+#include "BspTIM.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -109,6 +110,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
     BspUsartInit();
     BspAdcInit();
+    BspTIM_Init();
     
   /* USER CODE END 2 */
 

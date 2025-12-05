@@ -38,6 +38,7 @@
 "joint\bspcommusart.o"
 "joint\bspexit.o"
 "joint\bspadc.o"
+"joint\bsptim.o"
 "joint\app_adc.o"
 "joint\croutine.o"
 "joint\event_groups.o"
@@ -49,6 +50,8 @@
 "joint\cmsis_os2.o"
 "joint\heap_4.o"
 "joint\port.o"
+"joint\segger_rtt.o"
+"joint\segger_rtt_printf.o"
 --strict --scatter "Joint\Joint.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -11,20 +11,25 @@
 #include "BspCommUsart.h"
 #include "BspADC.h"
 #include "adc.h"
+#include "SEGGER_RTT.h"
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern float g_FloatTxData[12];
 
+uint32_t val;
+
 void ADC_Process(uint32_t tick)
 {
-    if(tick % 20 != 0)
+    if(tick % 500 != 0)
         return;
    
     HAL_ADC_Start(&hadc1);
 	HAL_ADC_Start(&hadc2);
     g_FloatTxData[3] = HAL_ADC_GetValue(&hadc1)*3.3f/4096.0f;  
-    BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 4);
+    BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 7);
+    val ++;
+    SEGGER_RTT_printf(0, "ADC1 Value: %ld\r\n", val);
 }
 
 

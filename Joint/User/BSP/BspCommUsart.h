@@ -44,7 +44,6 @@ uint16_t BspUsartGetRxDataCount(UsartInstance_t instance);
 UsartStatus_t BspUsartGetRxData(UsartInstance_t instance, uint8_t* buffer, uint16_t maxLength);
 void BspUsartClearRxBuffer(UsartInstance_t instance);
 void BspUartSendJustFloatData(UsartInstance_t instance, float *data, uint16_t length);
-void SEGGER_RTT_printf(const char * sFormat, ...);
 #ifdef __cplusplus
 }
 #endif

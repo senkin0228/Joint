@@ -5,6 +5,7 @@
         "bspexit.h": "c",
         "bspadc.h": "c",
         "example.h": "c",
-        "app_adc.h": "c"
+        "app_adc.h": "c",
+        "bsptim.h": "c"
     }
 }

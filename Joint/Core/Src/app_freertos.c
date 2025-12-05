@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "App_ADC.h"
+#include "BspTIM.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -147,6 +148,7 @@ void FOCTask(void *argument)
   for(;;)
   {
     ADC_Process(TaskTick);
+    BspTIMGetOutput();
     TaskTick ++;
     HAL_Delay(1);
     if(TaskTick >= 1000000)
