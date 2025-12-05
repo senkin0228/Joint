@@ -34,6 +34,9 @@
 "joint\system_stm32g4xx.o"
 "joint\protoclofringbuffer.o"
 "joint\bspcommusart.o"
+"joint\bspexit.o"
+"joint\bspadc.o"
+"joint\app_adc.o"
 --strict --scatter "Joint\Joint.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "BspADC.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -57,8 +57,9 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define BTNLED_Pin GPIO_PIN_13
-#define BTNLED_GPIO_Port GPIOC
+#define BTN3_Pin GPIO_PIN_13
+#define BTN3_GPIO_Port GPIOC
+#define BTN3_EXTI_IRQn EXTI15_10_IRQn
 #define LED2_Pin GPIO_PIN_4
 #define LED2_GPIO_Port GPIOC
 #define LED1_Pin GPIO_PIN_6

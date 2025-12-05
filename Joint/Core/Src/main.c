@@ -30,6 +30,8 @@
 #include <stdio.h>
 #include "stm32g4xx_hal_uart_ex.h"
 #include "BspCommUsart.h"
+#include "BspADC.h"
+#include "App_ADC.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,7 +52,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+static uint32_t TaskTick = 0;
+float g_FloatTxData[12];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,8 +104,10 @@ int main(void)
   MX_OPAMP3_Init();
   MX_TIM1_Init();
   MX_TIM4_Init();
+  MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
     BspUsartInit();
+    BspAdcInit();
     
   /* USER CODE END 2 */
 
@@ -113,12 +118,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-      HAL_GPIO_WritePin(GPIOC, BTNLED_Pin,GPIO_PIN_RESET);
-      HAL_Delay(1000);
-      //BspUsartSendData(UsartInstance3, data, 3);
-      HAL_GPIO_WritePin(GPIOC, BTNLED_Pin,GPIO_PIN_SET);
-      HAL_Delay(1000);
-      //BspUsartSendData(UsartInstance3, data, 4);
+    ADC_Process(TaskTick);
+    TaskTick += 1;
+    HAL_Delay(1);
+    if(TaskTick >= 1000000)
+    {
+        TaskTick = 0;
+    }
   }
   /* USER CODE END 3 */
 }
@@ -144,7 +150,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV3;
-  RCC_OscInitStruct.PLL.PLLN = 80;
+  RCC_OscInitStruct.PLL.PLLN = 40;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;

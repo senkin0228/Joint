@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32G431xx,__TARGET_FPU_VFP,__FPU_PRESENT, ARM_MATH_CM4</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32G4xx_HAL_Driver/Inc;../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32G4xx/Include;../Drivers/CMSIS/Include;../User/LIB;../User/BSP;../User/Driver</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32G4xx_HAL_Driver/Inc;../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32G4xx/Include;../Drivers/CMSIS/Include;../User/LIB;../User/BSP;../User/Driver;..\User\APP</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1196,10 +1196,27 @@
               <FileType>1</FileType>
               <FilePath>..\User\BSP\BspCommUsart.c</FilePath>
             </File>
+            <File>
+              <FileName>BspExit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\BSP\BspExit.c</FilePath>
+            </File>
+            <File>
+              <FileName>BspADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\BSP\BspADC.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>App</GroupName>
+          <Files>
+            <File>
+              <FileName>App_ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\APP\App_ADC.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
