@@ -34,6 +34,8 @@
 #include "BspADC.h"
 #include "App_ADC.h"
 #include "BspTIM.h"
+#include "cm_backtrace.h"
+#include "SEGGER_RTT.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,7 +45,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define FIRMWARE_NAME    "Joint"
+#define FIRMWARE_VERSION "V1.0.0"
+#define HARDWARE_VERSION "HW1.0.0"
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -86,14 +90,15 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+    SEGGER_RTT_printf(0, "cm_backtrace initialized\r\n");
+    cm_backtrace_init(FIRMWARE_NAME, FIRMWARE_VERSION, HARDWARE_VERSION);
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+    SEGGER_RTT_printf(0, "sysinit beging\r\n");
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -111,7 +116,7 @@ int main(void)
     BspUsartInit();
     BspAdcInit();
     BspTIM_Init();
-    
+    SEGGER_RTT_printf(0, "Os Start\r\n");
   /* USER CODE END 2 */
 
   /* Init scheduler */
