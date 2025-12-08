@@ -15,7 +15,12 @@ extern ADC_HandleTypeDef hadc2;
 extern OPAMP_HandleTypeDef hopamp1;
 extern OPAMP_HandleTypeDef hopamp2;
 extern OPAMP_HandleTypeDef hopamp3;
-extern uint8_t g_FloatTxData[12];
+extern float g_FloatTxData[12];
+float ADCIN[3];
+float IA_Offset = 0.0f;
+float IB_Offset = 0.0f;
+float IC_Offset = 0.0f;
+float Ia, Ib, Ic;
 //static uint8_t ADC_DMA_Buffer[SNS_ADC1_CH_NUM];
 
 void BspAdcInit(void)
@@ -38,19 +43,37 @@ void BspAdcInit(void)
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
   /* Prevent unused argument(s) compilation warning */
+  static uint8_t cnt=0;
   UNUSED(hadc);
 	if(hadc == &hadc1)
 	{
-		g_FloatTxData[0] = hadc1.Instance->JDR1;
-		g_FloatTxData[0] = (g_FloatTxData[0] - 0x7ef)*0.02197f;
-		g_FloatTxData[1] = hadc1.Instance->JDR2;
-		g_FloatTxData[1] = (g_FloatTxData[1] - 0x7f5)*0.02197f;	
+        cnt++;
+        ADCIN[0] = hadc1.Instance->JDR1;
+        ADCIN[1] = hadc2.Instance->JDR1;
+        ADCIN[2] = hadc1.Instance->JDR2;
+        IA_Offset += ADCIN[0];
+        IB_Offset += ADCIN[1];
+        IC_Offset += ADCIN[2];
+        if(cnt >= 10)
+        {
+            IA_Offset /= 10.0f;
+            IB_Offset /= 10.0f;
+            IC_Offset /= 10.0f;
+        }
+		
 	}
     if (hadc == &hadc2)
     {
         /* code */
-        g_FloatTxData[2] = hadc2.Instance->JDR1;
-		g_FloatTxData[2] = (g_FloatTxData[2] - 0x7e8)*0.02197f;
+        ADCIN[0] = hadc1.Instance->JDR1;
+        Ia = (ADCIN[0] - IA_Offset)*0.0193359375f; //3.3/4096*24
+        ADCIN[1] = hadc2.Instance->JDR1;
+        Ib = (ADCIN[1] - IB_Offset)*0.0193359375f;
+        ADCIN[2] = hadc1.Instance->JDR2;
+        Ic = (ADCIN[2] - IC_Offset)*0.0193359375f;
+        TIM1->CCR1 = 2000;
+        TIM1->CCR2 = 4000;
+        TIM1->CCR3 = 6000;
     }
     
 

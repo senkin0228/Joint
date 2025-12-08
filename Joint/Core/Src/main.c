@@ -20,6 +20,8 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "adc.h"
+#include "comp.h"
+#include "dac.h"
 #include "dma.h"
 #include "opamp.h"
 #include "tim.h"
@@ -36,6 +38,7 @@
 #include "BspTIM.h"
 #include "cm_backtrace.h"
 #include "SEGGER_RTT.h"
+#include "BspDac.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -90,7 +93,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-    SEGGER_RTT_printf(0, "cm_backtrace initialized\r\n");
+    SEGGER_RTT_printf(0, "[info] cm_backtrace initialized\r\n");
     cm_backtrace_init(FIRMWARE_NAME, FIRMWARE_VERSION, HARDWARE_VERSION);
   /* USER CODE END Init */
 
@@ -98,7 +101,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-    SEGGER_RTT_printf(0, "sysinit beging\r\n");
+    SEGGER_RTT_printf(0, "[info] sysinit beginning\r\n");
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -112,11 +115,15 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM4_Init();
   MX_ADC2_Init();
+  MX_COMP1_Init();
+  MX_DAC3_Init();
+  MX_DAC1_Init();
   /* USER CODE BEGIN 2 */
     BspUsartInit();
     BspAdcInit();
     BspTIM_Init();
-    SEGGER_RTT_printf(0, "Os Start\r\n");
+    BspDac_Init();
+    SEGGER_RTT_printf(0, "[info] Os Start\r\n");
   /* USER CODE END 2 */
 
   /* Init scheduler */

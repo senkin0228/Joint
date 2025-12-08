@@ -27,10 +27,12 @@ void ADC_Process(uint32_t tick)
     HAL_ADC_Start(&hadc1);
     HAL_ADC_Start(&hadc2);
     g_FloatTxData[3] = HAL_ADC_GetValue(&hadc1)*3.3f/4096.0f;  
+    g_FloatTxData[4] = HAL_ADC_GetValue(&hadc2)*3.3f/4096.0f*26.0f;
     BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 7);
     val ++;
-    SEGGER_RTT_printf(0, "ADC1 Value: %ld\r\n", val);
-    
+    SEGGER_RTT_printf(0, "[info ] adc val:%lu\r\n", val);
+    SEGGER_RTT_printf(1, "[debug] adc val:%lu\r\n", val);
+
 }
 
 

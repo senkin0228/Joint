@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "App_ADC.h"
 #include "BspTIM.h"
+#include "gpio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,6 +48,7 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 static uint32_t TaskTick = 0;
+uint8_t heartBeatPlot = 0;
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -129,7 +131,12 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    heartBeatPlot = !heartBeatPlot;
+    HAL_GPIO_WritePin(GPIOC, LED1_Pin, GPIO_PIN_RESET);
+    osDelay(500);
+    heartBeatPlot = !heartBeatPlot;
+    HAL_GPIO_WritePin(GPIOC, LED1_Pin, GPIO_PIN_SET);
+    osDelay(500);
   }
   /* USER CODE END StartDefaultTask */
 }

@@ -37,6 +37,7 @@ void MX_TIM1_Init(void)
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIMEx_BreakInputConfigTypeDef sBreakInputConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
 
@@ -70,6 +71,13 @@ void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
+  sBreakInputConfig.Source = TIM_BREAKINPUTSOURCE_COMP1;
+  sBreakInputConfig.Enable = TIM_BREAKINPUTSOURCE_ENABLE;
+  sBreakInputConfig.Polarity = TIM_BREAKINPUTSOURCE_POLARITY_HIGH;
+  if (HAL_TIMEx_ConfigBreakInput(&htim1, TIM_BREAKINPUT_BRK, &sBreakInputConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
@@ -90,6 +98,7 @@ void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM2;
+  sConfigOC.Pulse = 7998;
   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
   {
     Error_Handler();
@@ -126,6 +135,7 @@ void MX_TIM4_Init(void)
   /* USER CODE END TIM4_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_HallSensor_InitTypeDef sConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
   /* USER CODE BEGIN TIM4_Init 1 */
@@ -146,7 +156,15 @@ void MX_TIM4_Init(void)
   {
     Error_Handler();
   }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
+  sConfig.IC1Filter = 10;
+  sConfig.Commutation_Delay = 5;
+  if (HAL_TIMEx_HallSensor_Init(&htim4, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_OC2REF;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
   {
@@ -161,6 +179,7 @@ void MX_TIM4_Init(void)
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
 {
 
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(tim_baseHandle->Instance==TIM1)
   {
   /* USER CODE BEGIN TIM1_MspInit 0 */
@@ -185,6 +204,23 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
   /* USER CODE END TIM4_MspInit 0 */
     /* TIM4 clock enable */
     __HAL_RCC_TIM4_CLK_ENABLE();
+
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    /**TIM4 GPIO Configuration
+    PB6     ------> TIM4_CH1
+    PB7     ------> TIM4_CH2
+    PB8-BOOT0     ------> TIM4_CH3
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    GPIO_InitStruct.Alternate = GPIO_AF2_TIM4;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    /* TIM4 interrupt Init */
+    HAL_NVIC_SetPriority(TIM4_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(TIM4_IRQn);
   /* USER CODE BEGIN TIM4_MspInit 1 */
 
   /* USER CODE END TIM4_MspInit 1 */
@@ -204,13 +240,13 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**TIM1 GPIO Configuration
     PB13     ------> TIM1_CH1N
-    PB14     ------> TIM1_CH2N
     PB15     ------> TIM1_CH3N
     PA8     ------> TIM1_CH1
     PA9     ------> TIM1_CH2
     PA10     ------> TIM1_CH3
+    PA12     ------> TIM1_CH2N
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14;
+    GPIO_InitStruct.Pin = GPIO_PIN_13;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -224,7 +260,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
     GPIO_InitStruct.Alternate = GPIO_AF4_TIM1;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+    GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_12;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -263,6 +299,16 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
   /* USER CODE END TIM4_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_TIM4_CLK_DISABLE();
+
+    /**TIM4 GPIO Configuration
+    PB6     ------> TIM4_CH1
+    PB7     ------> TIM4_CH2
+    PB8-BOOT0     ------> TIM4_CH3
+    */
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8);
+
+    /* TIM4 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(TIM4_IRQn);
   /* USER CODE BEGIN TIM4_MspDeInit 1 */
 
   /* USER CODE END TIM4_MspDeInit 1 */
