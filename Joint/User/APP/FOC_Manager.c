@@ -1,5 +1,5 @@
 /***********************************************************************************
-* @file     : App_ADC.c
+* @file     : FOC_Manager.c
 * @brief    : 
 * @details  : 
 * @author   : \.rumi
@@ -7,27 +7,36 @@
 * @version  : V1.0.0
 * @copyright: Copyright (c) 2050
 **********************************************************************************/
+#include "FOC_Manager.h"
+#include "VF.h"
 #include "App_ADC.h"
-#include "BspCommUsart.h"
-#include "BspADC.h"
-#include "adc.h"
-#include "SEGGER_RTT.h"
+#include "BspTIM.h"
+#include "gpio.h"
 #include "log.h"
+#include "adc.h"
+
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
-extern float g_FloatTxData[12];
+extern ExtY rtY;
+extern ExtU rtU;
 
-uint32_t val;
-
-void ADC_Process(uint32_t tick)
+void FOC_Manager_Init(void)
 {
-  
-    HAL_ADC_Start(&hadc1);
+    rtU.ud = 0;
+	rtU.uq = 12;
+	rtU.Freq = 4;
+}
+
+
+void FOC_Manager_Process(uint16_t TaskTick)
+{
+    static uint32_t adc_vbus = 0;
+    //ADC_Process(TaskTick);
+    BspTIMGetOutput();
     HAL_ADC_Start(&hadc2);
-    // g_FloatTxData[3] = HAL_ADC_GetValue(&hadc1)*3.3f/4096.0f;  
-    // g_FloatTxData[4] = HAL_ADC_GetValue(&hadc2)*3.3f/4096.0f*26.0f;
-    //BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 7);
+    adc_vbus = HAL_ADC_GetValue(&hadc2);
+	rtU.v_bus = adc_vbus*3.3f/4096*26;
 }
 
 

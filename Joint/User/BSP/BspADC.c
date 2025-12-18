@@ -9,6 +9,7 @@
 **********************************************************************************/
 #include "BspADC.h"
 #include "adc.h"
+#include "VF.h"
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
@@ -25,8 +26,8 @@ float Ia, Ib, Ic;
 
 void BspAdcInit(void)
 {
-    HAL_ADC_MspInit(&hadc1);
-    HAL_ADC_MspInit(&hadc2);
+    // HAL_ADC_MspInit(&hadc1);
+    // HAL_ADC_MspInit(&hadc2);
 
     HAL_OPAMP_Start(&hopamp1);
 	HAL_OPAMP_Start(&hopamp2);
@@ -42,40 +43,53 @@ void BspAdcInit(void)
 
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
+	static uint8_t cnt;
+	static uint16_t obsever_cnt;
+    uint32_t adc1_in1 = 0;
+    uint32_t adc1_in2 = 0;
+    uint32_t adc1_in3 = 0;  
+    static uint8_t ADC_offset = 0;
+    
   /* Prevent unused argument(s) compilation warning */
-  static uint8_t cnt=0;
   UNUSED(hadc);
 	if(hadc == &hadc1)
 	{
-        cnt++;
-        ADCIN[0] = hadc1.Instance->JDR1;
-        ADCIN[1] = hadc2.Instance->JDR1;
-        ADCIN[2] = hadc1.Instance->JDR2;
-        IA_Offset += ADCIN[0];
-        IB_Offset += ADCIN[1];
-        IC_Offset += ADCIN[2];
-        if(cnt >= 10)
-        {
-            IA_Offset /= 10.0f;
-            IB_Offset /= 10.0f;
-            IC_Offset /= 10.0f;
-        }
-		
+		if(ADC_offset == 0)
+		{
+			cnt++;
+			adc1_in1 = hadc1.Instance->JDR1;
+			adc1_in2 = hadc2.Instance->JDR1;
+			adc1_in3 = hadc1.Instance->JDR2;
+			IA_Offset += adc1_in1;
+			IB_Offset += adc1_in2;
+			IC_Offset += adc1_in3;
+			if(cnt >= 10)
+			{
+				ADC_offset = 1;
+				IA_Offset = IA_Offset/10;
+				IB_Offset = IB_Offset/10;
+				IC_Offset = IC_Offset/10;
+			}
+		}
+		else
+		{
+			adc1_in1 = hadc1.Instance->JDR1;
+			adc1_in3 = hadc1.Instance->JDR2;
+			adc1_in2 = hadc2.Instance->JDR1;
+			Ia = (adc1_in1 - IA_Offset)*0.02197f;
+			Ib = (adc1_in2 - IB_Offset)*0.02197f;
+			Ic = (adc1_in3 - IC_Offset)*0.02197f;
+			VF_step();
+			TIM1->CCR1 = rtY.tABC[0];
+			TIM1->CCR2 = rtY.tABC[1];
+			TIM1->CCR3 = rtY.tABC[2];
+			g_FloatTxData[0] = Ia;
+			g_FloatTxData[1] = Ib;
+			g_FloatTxData[2] = rtY.tABC[0];
+			g_FloatTxData[3] = rtY.tABC[1];
+			g_FloatTxData[4] = rtY.tABC[2];
+		}
 	}
-    if (hadc == &hadc2)
-    {
-        /* code */
-        ADCIN[0] = hadc1.Instance->JDR1;
-        Ia = (ADCIN[0] - IA_Offset)*0.0193359375f; //3.3/4096*24
-        ADCIN[1] = hadc2.Instance->JDR1;
-        Ib = (ADCIN[1] - IB_Offset)*0.0193359375f;
-        ADCIN[2] = hadc1.Instance->JDR2;
-        Ic = (ADCIN[2] - IC_Offset)*0.0193359375f;
-        TIM1->CCR1 = 2000;
-        TIM1->CCR2 = 4000;
-        TIM1->CCR3 = 6000;
-    }
-    
 
   /* NOTE : This function should not be modified. When the callback is needed,
             function HAL_ADCEx_InjectedConvCpltCallback must be implemented in the user file.

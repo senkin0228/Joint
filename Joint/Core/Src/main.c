@@ -39,6 +39,7 @@
 #include "cm_backtrace.h"
 #include "SEGGER_RTT.h"
 #include "BspDac.h"
+#include "log.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,9 +49,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define FIRMWARE_NAME    "Joint"
-#define FIRMWARE_VERSION "V1.0.0"
-#define HARDWARE_VERSION "HW1.0.0"
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -93,8 +92,9 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-    SEGGER_RTT_printf(0, "[info] cm_backtrace initialized\r\n");
-    cm_backtrace_init(FIRMWARE_NAME, FIRMWARE_VERSION, HARDWARE_VERSION);
+    Log_Init();
+    LOG_I("Log System Initialized");
+    LOG_D("Log System Debug Open");
   /* USER CODE END Init */
 
   /* Configure the system clock */

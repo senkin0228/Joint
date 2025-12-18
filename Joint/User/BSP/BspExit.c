@@ -15,27 +15,29 @@
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   /* Prevent unused argument(s) compilation warning */
+    static uint8_t Motor_state = 0;
     UNUSED(GPIO_Pin);
 	if(BTN1_Pin == GPIO_Pin)
 	{
-        HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-        HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-        HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-        HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
-        HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
-        HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
-	}
-	if(BTN2_Pin == GPIO_Pin)
-	{
-        HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
-        HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
-        HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
-        HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
-        HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
-        HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_3);
-	}
-	if(BTN3_Pin == GPIO_Pin)
-	{
+		Motor_state = ~Motor_state;
+		if(0 == Motor_state)
+		{
+			HAL_TIM_PWM_Stop( &htim1, TIM_CHANNEL_1);
+			HAL_TIM_PWM_Stop( &htim1, TIM_CHANNEL_2);
+			HAL_TIM_PWM_Stop( &htim1, TIM_CHANNEL_3);
+			HAL_TIMEx_PWMN_Stop( &htim1, TIM_CHANNEL_1);
+			HAL_TIMEx_PWMN_Stop( &htim1, TIM_CHANNEL_2);
+			HAL_TIMEx_PWMN_Stop( &htim1, TIM_CHANNEL_3);
+		}
+		else
+		{
+			HAL_TIM_PWM_Start( &htim1, TIM_CHANNEL_1);
+			HAL_TIM_PWM_Start( &htim1, TIM_CHANNEL_2);
+			HAL_TIM_PWM_Start( &htim1, TIM_CHANNEL_3);
+			HAL_TIMEx_PWMN_Start( &htim1, TIM_CHANNEL_1);
+			HAL_TIMEx_PWMN_Start( &htim1, TIM_CHANNEL_2);
+			HAL_TIMEx_PWMN_Start( &htim1, TIM_CHANNEL_3);
+		}
 	}
   /* NOTE: This function should not be modified, when the callback is needed,
            the HAL_GPIO_EXTI_Callback could be implemented in the user file

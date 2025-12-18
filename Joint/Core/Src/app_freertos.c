@@ -28,6 +28,8 @@
 #include "App_ADC.h"
 #include "BspTIM.h"
 #include "gpio.h"
+#include "log.h"
+#include "FOC_Manager.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +49,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-static uint32_t TaskTick = 0;
+
 uint8_t heartBeatPlot = 0;
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
@@ -128,15 +130,20 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
+  static uint16_t tick = 0;
   /* Infinite loop */
   for(;;)
   {
-    heartBeatPlot = !heartBeatPlot;
-    HAL_GPIO_WritePin(GPIOC, LED1_Pin, GPIO_PIN_RESET);
-    osDelay(500);
-    heartBeatPlot = !heartBeatPlot;
-    HAL_GPIO_WritePin(GPIOC, LED1_Pin, GPIO_PIN_SET);
-    osDelay(500);
+    tick++;
+    Log_Process(1);
+    osDelay(1);
+
+    // led heartbeat
+    if(tick % 500 == 0)
+    {
+        tick = 0;
+        HAL_GPIO_TogglePin(GPIOC, LED1_Pin);
+    }
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -151,18 +158,18 @@ void StartDefaultTask(void *argument)
 void FOCTask(void *argument)
 {
   /* USER CODE BEGIN FOCTask */
+  static uint16_t TaskTick = 0;
+  FOC_Manager_Init();
   /* Infinite loop */
   for(;;)
-  {
-    ADC_Process(TaskTick);
-    BspTIMGetOutput();
-    TaskTick ++;
-    HAL_Delay(1);
-    if(TaskTick >= 1000000)
+  { 
+    TaskTick +=10;
+    FOC_Manager_Process(TaskTick);
+    if(TaskTick >= 60000)
     {
         TaskTick = 0;
     }
-    osDelay(1);
+    osDelay(10);
   }
   /* USER CODE END FOCTask */
 }
