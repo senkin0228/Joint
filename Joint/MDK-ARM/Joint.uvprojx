@@ -2191,9 +2191,9 @@
           <GroupName>MATLAB</GroupName>
           <Files>
             <File>
-              <FileName>VF.c</FileName>
+              <FileName>FOC.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\MATLAB\VF.c</FilePath>
+              <FilePath>..\User\MATLAB\FOC.c</FilePath>
             </File>
           </Files>
         </Group>

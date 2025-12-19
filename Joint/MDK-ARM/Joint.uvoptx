@@ -120,6 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name>	</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -1101,7 +1102,7 @@
 
   <Group>
     <GroupName>MATLAB</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1112,8 +1113,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\User\MATLAB\VF.c</PathWithFileName>
-      <FilenameWithoutPath>VF.c</FilenameWithoutPath>
+      <PathWithFileName>..\User\MATLAB\FOC.c</PathWithFileName>
+      <FilenameWithoutPath>FOC.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

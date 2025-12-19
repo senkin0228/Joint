@@ -61,7 +61,7 @@
 "joint\log.o"
 "joint\cm_backtrace.o"
 "joint\cmb_fault.o"
-"joint\vf.o"
+"joint\foc.o"
 --strict --scatter "Joint\Joint.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

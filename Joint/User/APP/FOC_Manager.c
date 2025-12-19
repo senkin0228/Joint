@@ -8,7 +8,7 @@
 * @copyright: Copyright (c) 2050
 **********************************************************************************/
 #include "FOC_Manager.h"
-#include "VF.h"
+#include "FOC.h"
 #include "App_ADC.h"
 #include "BspTIM.h"
 #include "gpio.h"
@@ -25,7 +25,7 @@ void FOC_Manager_Init(void)
 {
     rtU.ud = 0;
 	rtU.uq = 12;
-	rtU.Freq = 4;
+	rtU.Freq = 8;
 }
 
 

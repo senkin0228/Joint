@@ -84,7 +84,7 @@ do_not_interpret_as_enum = false
 [var3]
 name = rtU.v_bus
 tracked_name = rtU.v_bus
-address = 536881044
+address = 536881032
 type = 7
 color = 2234368848
 should_update_from_elf = true

@@ -9,7 +9,7 @@
 **********************************************************************************/
 #include "BspADC.h"
 #include "adc.h"
-#include "VF.h"
+#include "FOC.h"
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
@@ -79,7 +79,7 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 			Ia = (adc1_in1 - IA_Offset)*0.02197f;
 			Ib = (adc1_in2 - IB_Offset)*0.02197f;
 			Ic = (adc1_in3 - IC_Offset)*0.02197f;
-			VF_step();
+			FOC_step();
 			TIM1->CCR1 = rtY.tABC[0];
 			TIM1->CCR2 = rtY.tABC[1];
 			TIM1->CCR3 = rtY.tABC[2];
