@@ -25,7 +25,7 @@ void FOC_Manager_Init(void)
 {
     rtU.ud = 0;
 	rtU.uq = 12;
-	rtU.Freq = 8;
+	rtU.Freq = 1;
 }
 
 
