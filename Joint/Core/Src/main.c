@@ -20,7 +20,6 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "adc.h"
-#include "comp.h"
 #include "dac.h"
 #include "dma.h"
 #include "opamp.h"
@@ -110,19 +109,18 @@ int main(void)
   MX_USART3_UART_Init();
   MX_ADC1_Init();
   MX_OPAMP1_Init();
-  MX_OPAMP2_Init();
   MX_OPAMP3_Init();
   MX_TIM1_Init();
   MX_TIM4_Init();
   MX_ADC2_Init();
-  MX_COMP1_Init();
   MX_DAC3_Init();
   MX_DAC1_Init();
+  MX_OPAMP2_Init();
   /* USER CODE BEGIN 2 */
     BspUsartInit();
     BspAdcInit();
     BspTIM_Init();
-    BspDac_Init();
+//    BspDac_Init();
     SEGGER_RTT_printf(0, "[info] Os Start\r\n");
   /* USER CODE END 2 */
 

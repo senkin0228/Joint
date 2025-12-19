@@ -31,12 +31,12 @@ void FOC_Manager_Init(void)
 
 void FOC_Manager_Process(uint16_t TaskTick)
 {
-    static uint32_t adc_vbus = 0;
+    static uint16_t adc_vbus = 0;
     //ADC_Process(TaskTick);
     BspTIMGetOutput();
     HAL_ADC_Start(&hadc2);
     adc_vbus = HAL_ADC_GetValue(&hadc2);
-	rtU.v_bus = adc_vbus*3.3f/4096*26;
+	rtU.v_bus = ((float)adc_vbus)*3.3f/4096.0f*26.0f;
 }
 
 
