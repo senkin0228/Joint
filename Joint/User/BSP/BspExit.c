@@ -11,6 +11,9 @@
 #include "main.h"
 #include "gpio.h"
 #include "tim.h"
+#include "FOC.h"
+extern ExtU rtU;
+
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -22,6 +25,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		Motor_state = ~Motor_state;
 		if(0 == Motor_state)
 		{
+            rtU.Motor_OnOff = 0;
 			HAL_TIM_PWM_Stop( &htim1, TIM_CHANNEL_1);
 			HAL_TIM_PWM_Stop( &htim1, TIM_CHANNEL_2);
 			HAL_TIM_PWM_Stop( &htim1, TIM_CHANNEL_3);
@@ -31,6 +35,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		}
 		else
 		{
+            rtU.Motor_OnOff = 1;
 			HAL_TIM_PWM_Start( &htim1, TIM_CHANNEL_1);
 			HAL_TIM_PWM_Start( &htim1, TIM_CHANNEL_2);
 			HAL_TIM_PWM_Start( &htim1, TIM_CHANNEL_3);

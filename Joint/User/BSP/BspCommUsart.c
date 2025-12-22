@@ -89,20 +89,17 @@ void BspUsartClearRxBuffer(UsartInstance_t instance)
 
 void BspUartSendJustFloatData(UsartInstance_t instance, float *data, uint16_t length)
 {
-    static uint8_t txBuffer[64];
-    static uint8_t index = 0;
+    static volatile uint8_t txBuffer[64];
+    static volatile uint8_t index = 0;
     for(uint16_t i = 0; i < length; i++) {
-        memcpy(&txBuffer[i * 4], (uint8_t *)&data[i], sizeof(float));
+        memcpy((uint8_t *)&txBuffer[i * 4], (uint8_t *)&data[i], sizeof(float));
         index += 4;
     }
     txBuffer[index++] = 0x00;
     txBuffer[index++] = 0x00;
     txBuffer[index++] = 0x80;
     txBuffer[index++] = 0x7f;
-    if(BspUsartSendData(instance, txBuffer, index) == UsartStatusError) {
-        HAL_Delay(1);
-        BspUsartSendData(instance, txBuffer, index);
-    }
+    BspUsartSendData(instance, (uint8_t *)txBuffer, index);
     index = 0;
 }
 

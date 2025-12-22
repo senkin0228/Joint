@@ -23,9 +23,7 @@ extern ExtU rtU;
 
 void FOC_Manager_Init(void)
 {
-    rtU.ud = 0;
-	rtU.uq = 12;
-	rtU.Freq = 1;
+	rtU.Motor_OnOff = 0;
 }
 
 

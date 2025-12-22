@@ -10,6 +10,7 @@
 #include "BspADC.h"
 #include "adc.h"
 #include "FOC.h"
+#include "BspCommUsart.h"
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
@@ -76,18 +77,21 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 			adc1_in1 = hadc1.Instance->JDR1;
 			adc1_in3 = hadc1.Instance->JDR2;
 			adc1_in2 = hadc2.Instance->JDR1;
-			Ia = (adc1_in1 - IA_Offset)*0.02197f;
-			Ib = (adc1_in2 - IB_Offset)*0.02197f;
-			Ic = (adc1_in3 - IC_Offset)*0.02197f;
+			rtU.ia = (adc1_in1 - IA_Offset)*0.02197f;
+			rtU.ib = (adc1_in2 - IB_Offset)*0.02197f;
+			rtU.ic = (adc1_in3 - IC_Offset)*0.02197f;
 			FOC_step();
 			TIM1->CCR1 = rtY.tABC[0];
 			TIM1->CCR2 = rtY.tABC[1];
 			TIM1->CCR3 = rtY.tABC[2];
-			g_FloatTxData[0] = Ia;
-			g_FloatTxData[1] = Ib;
-			g_FloatTxData[2] = rtY.tABC[0];
-			g_FloatTxData[3] = rtY.tABC[1];
-			g_FloatTxData[4] = rtY.tABC[2];
+			g_FloatTxData[0] = rtU.ia;
+			g_FloatTxData[1] = rtU.ib;
+            g_FloatTxData[2] = rtU.ic;
+			g_FloatTxData[3] = rtY.tABC[0];
+			g_FloatTxData[4] = rtY.tABC[1];
+			g_FloatTxData[5] = rtY.tABC[2];
+            g_FloatTxData[6] = rtDW.ThetaOpen;
+            BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 7);
 		}
 	}
 
