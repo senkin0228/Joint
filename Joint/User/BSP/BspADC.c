@@ -11,6 +11,7 @@
 #include "adc.h"
 #include "FOC.h"
 #include "BspCommUsart.h"
+#include "BspTIM.h"
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
@@ -18,6 +19,16 @@ extern OPAMP_HandleTypeDef hopamp1;
 extern OPAMP_HandleTypeDef hopamp2;
 extern OPAMP_HandleTypeDef hopamp3;
 extern float g_FloatTxData[12];
+
+extern float HallTemp;
+extern float HallThetaAdd;
+extern float HallTheta;
+extern float HallSpeed;
+extern float HallSpeedLast;
+extern float HallSpeedtest;
+extern float alpha;
+extern uint8_t HallReadTemp;
+
 float ADCIN[3];
 float IA_Offset = 0.0f;
 float IB_Offset = 0.0f;
@@ -74,6 +85,19 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 		}
 		else
 		{
+            HallTheta = HallTheta + HallThetaAdd;
+			if(HallTheta<0.0f)
+			{
+				HallTheta += 2.0f*PI;
+			}
+			else if(HallTheta>(2.0f*PI))
+			{
+				HallTheta -= 2.0f*PI;
+			}
+			rtU.Real_Theta = HallTheta;
+			rtU.SpeedFd = HallSpeed;
+			HallSpeedtest = alpha * HallSpeed + (1 - alpha) * HallSpeedLast;
+			HallSpeedLast = HallSpeed;
 			adc1_in1 = hadc1.Instance->JDR1;
 			adc1_in3 = hadc1.Instance->JDR2;
 			adc1_in2 = hadc2.Instance->JDR1;
@@ -84,14 +108,10 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 			TIM1->CCR1 = rtY.tABC[0];
 			TIM1->CCR2 = rtY.tABC[1];
 			TIM1->CCR3 = rtY.tABC[2];
-			g_FloatTxData[0] = rtU.ia;
-			g_FloatTxData[1] = rtU.ib;
-            g_FloatTxData[2] = rtU.ic;
-			g_FloatTxData[3] = rtY.tABC[0];
-			g_FloatTxData[4] = rtY.tABC[1];
-			g_FloatTxData[5] = rtY.tABC[2];
-            g_FloatTxData[6] = rtDW.ThetaOpen;
-            BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 7);
+            g_FloatTxData[0] = rtU.Real_Theta;
+            g_FloatTxData[1] = rtU.SpeedFd;
+            g_FloatTxData[2] = rtU.SpeedRef;
+            BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 3);
 		}
 	}
 

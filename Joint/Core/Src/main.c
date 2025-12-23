@@ -20,6 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "adc.h"
+#include "comp.h"
 #include "dac.h"
 #include "dma.h"
 #include "opamp.h"
@@ -116,6 +117,7 @@ int main(void)
   MX_DAC3_Init();
   MX_DAC1_Init();
   MX_OPAMP2_Init();
+  MX_COMP1_Init();
   /* USER CODE BEGIN 2 */
     BspUsartInit();
     BspAdcInit();

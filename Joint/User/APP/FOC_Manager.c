@@ -24,17 +24,36 @@ extern ExtU rtU;
 void FOC_Manager_Init(void)
 {
 	rtU.Motor_OnOff = 0;
+    rtU.SpeedRef = 800;
 }
 
 
 void FOC_Manager_Process(uint16_t TaskTick)
 {
-    static uint16_t adc_vbus = 0;
+    static uint16_t adc_vbus,Vpoten = 0;
+    static uint16_t SpeedRefTick = 0;
     //ADC_Process(TaskTick);
     BspTIMGetOutput();
     HAL_ADC_Start(&hadc2);
+    Vpoten = HAL_ADC_GetValue(&hadc1);
     adc_vbus = HAL_ADC_GetValue(&hadc2);
 	rtU.v_bus = ((float)adc_vbus)*3.3f/4096.0f*26.0f;
+    if(rtU.Motor_OnOff == 1) {
+        SpeedRefTick+=10;
+        if(SpeedRefTick == 6000) {
+            rtU.SpeedRef = 800;
+        } else if(SpeedRefTick == 10000) {
+            rtU.SpeedRef = 1200;
+        }else if(SpeedRefTick == 15000) {
+            rtU.SpeedRef = 1500;
+        }else if(SpeedRefTick >= 20000) {
+            SpeedRefTick = 20000;
+        }
+        
+    } else {
+        SpeedRefTick = 0;
+        rtU.SpeedRef = 800;
+    }
 }
 
 

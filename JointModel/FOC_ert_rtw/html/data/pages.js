@@ -1,0 +1,1 @@
+var reportPages = [["Summary","FOC_survey.html"],["Subsystem Report","FOC_subsystems.html"],["Code Interface Report","FOC_interface.html"],["Traceability Report","FOC_trace.html"],["Static Code Metrics Report","FOC_metrics.html"],["Eliminated Blocks","FOC_reducedblocks.html"],["Code Replacements Report","FOC_replacements.html"],["Coder Assumptions","FOC_coderassumptions.html"]];

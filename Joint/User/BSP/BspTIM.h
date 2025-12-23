@@ -19,6 +19,8 @@
 extern "C" {
 #endif
 
+#define PI					3.14159265358979f
+#define PHASE_SHIFT_ANGLE (float)(220.0f/360.0f*2.0f*PI)
 
 void BspTIM_Init(void);
 void BspTIMGetOutput(void);
