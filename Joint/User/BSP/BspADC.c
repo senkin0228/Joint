@@ -12,6 +12,7 @@
 #include "FOC.h"
 #include "BspCommUsart.h"
 #include "BspTIM.h"
+#include "Drv_AS5600.h"
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
@@ -85,19 +86,20 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 		}
 		else
 		{
-            HallTheta = HallTheta + HallThetaAdd;
-			if(HallTheta<0.0f)
-			{
-				HallTheta += 2.0f*PI;
-			}
-			else if(HallTheta>(2.0f*PI))
-			{
-				HallTheta -= 2.0f*PI;
-			}
+            
+//            HallTheta = HallTheta + HallThetaAdd;
+//			if(HallTheta<0.0f)
+//			{
+//				HallTheta += 2.0f*PI;
+//			}
+//			else if(HallTheta>(2.0f*PI))
+//			{
+//				HallTheta -= 2.0f*PI;
+//			}
 			rtU.Real_Theta = HallTheta;
 			rtU.SpeedFd = HallSpeed;
-			HallSpeedtest = alpha * HallSpeed + (1 - alpha) * HallSpeedLast;
-			HallSpeedLast = HallSpeed;
+			//HallSpeedtest = alpha * HallSpeed + (1 - alpha) * HallSpeedLast;
+			
 			adc1_in1 = hadc1.Instance->JDR1;
 			adc1_in3 = hadc1.Instance->JDR2;
 			adc1_in2 = hadc2.Instance->JDR1;
@@ -111,7 +113,14 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
             g_FloatTxData[0] = rtU.Real_Theta;
             g_FloatTxData[1] = rtU.SpeedFd;
             g_FloatTxData[2] = rtU.SpeedRef;
-            BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 3);
+            g_FloatTxData[3] = rtU.v_bus;
+            g_FloatTxData[4] = rtU.ia;
+            g_FloatTxData[5] = rtU.ib;
+            g_FloatTxData[6] = rtU.ic;
+            g_FloatTxData[7] = rtY.tABC[0];
+            g_FloatTxData[8] = rtY.tABC[1];
+            g_FloatTxData[9] = rtY.tABC[2];
+            BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 10);
 		}
 	}
 

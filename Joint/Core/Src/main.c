@@ -23,6 +23,7 @@
 #include "comp.h"
 #include "dac.h"
 #include "dma.h"
+#include "i2c.h"
 #include "opamp.h"
 #include "tim.h"
 #include "usart.h"
@@ -40,6 +41,7 @@
 #include "SEGGER_RTT.h"
 #include "BspDac.h"
 #include "log.h"
+#include "Drv_AS5600.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -118,11 +120,14 @@ int main(void)
   MX_DAC1_Init();
   MX_OPAMP2_Init();
   MX_COMP1_Init();
+  MX_I2C1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
     BspUsartInit();
     BspAdcInit();
     BspTIM_Init();
 //    BspDac_Init();
+    AS5600_Init();
     SEGGER_RTT_printf(0, "[info] Os Start\r\n");
   /* USER CODE END 2 */
 
@@ -202,6 +207,7 @@ void SystemClock_Config(void)
 //  USART3->TDR = (uint8_t)(ch & 0xFF);
 //  return ch;
 //}
+#ifdef mmm
 /* USER CODE END 4 */
 
 /**
@@ -215,13 +221,14 @@ void SystemClock_Config(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
-
+    
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM7) {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-
+    #endif
+    void hhh(){
   /* USER CODE END Callback 1 */
 }
 
@@ -232,6 +239,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
+  
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
   while (1)

@@ -24,7 +24,7 @@ extern ExtU rtU;
 void FOC_Manager_Init(void)
 {
 	rtU.Motor_OnOff = 0;
-    rtU.SpeedRef = 800;
+    rtU.SpeedRef = 400;
 }
 
 
@@ -40,19 +40,19 @@ void FOC_Manager_Process(uint16_t TaskTick)
 	rtU.v_bus = ((float)adc_vbus)*3.3f/4096.0f*26.0f;
     if(rtU.Motor_OnOff == 1) {
         SpeedRefTick+=10;
-        if(SpeedRefTick == 6000) {
+        if(SpeedRefTick == 5000) {
+            rtU.SpeedRef = 400;
+        } else if(SpeedRefTick == 20000) {
+            rtU.SpeedRef = 600;
+        }else if(SpeedRefTick == 30000) {
             rtU.SpeedRef = 800;
-        } else if(SpeedRefTick == 10000) {
-            rtU.SpeedRef = 1200;
-        }else if(SpeedRefTick == 15000) {
-            rtU.SpeedRef = 1500;
-        }else if(SpeedRefTick >= 20000) {
-            SpeedRefTick = 20000;
+        }else if(SpeedRefTick >= 30000) {
+            SpeedRefTick = 30000;
         }
         
     } else {
         SpeedRefTick = 0;
-        rtU.SpeedRef = 800;
+        rtU.SpeedRef = 400;
     }
 }
 
