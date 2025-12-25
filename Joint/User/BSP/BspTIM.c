@@ -107,7 +107,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         {
             d_theta -= 2.0f*PI;
         }
-        HallSpeedtest = d_theta*2000.0f*60.0f/(2.0f*PI);
+        HallSpeedtest = d_theta*2000.0f*60.0f/(2.0f*PI)/11.0f;
         HallSpeed = alpha * HallSpeedtest + (1.0f - alpha) * HallSpeed;
 
     }else if (htim->Instance == TIM7) {
