@@ -114,12 +114,7 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
             g_FloatTxData[1] = rtU.SpeedFd;
             g_FloatTxData[2] = rtU.SpeedRef;
             g_FloatTxData[3] = rtU.v_bus;
-            g_FloatTxData[4] = rtU.ia;
-            g_FloatTxData[5] = rtU.ib;
-            g_FloatTxData[6] = rtU.ic;
-            g_FloatTxData[7] = rtY.tABC[0];
-            g_FloatTxData[8] = rtY.tABC[1];
-            g_FloatTxData[9] = rtY.tABC[2];
+            g_FloatTxData[4] = rtDW.is_c3_FOC;
             BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 10);
 		}
 	}

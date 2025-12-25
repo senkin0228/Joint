@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'FOC'.
  *
- * Model version                  : 1.227
+ * Model version                  : 1.230
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Wed Dec 24 11:15:07 2025
+ * C/C++ source code generated on : Thu Dec 25 10:32:52 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -638,7 +638,7 @@ void FOC_step(void)
     /* Merge: '<S2>/Merge1' incorporates:
      *  SignalConversion generated from: '<S10>/iq_ref'
      */
-    rtDW.Merge1 = rtDW.Saturation;
+    rtDW.Merge1 = -rtDW.Saturation;
 
     /* End of Outputs for SubSystem: '<S2>/If Action Subsystem3' */
     break;
@@ -676,10 +676,10 @@ void FOC_step(void)
   Integrator = rtb_Sum1_a * 0.26F + (real32_T)rtDW.Integrator_DSTATE_a * 0.0001F;
 
   /* Saturate: '<S58>/Saturation' */
-  if (Integrator > 12.4707661F) {
-    rtb_DeadZone = 12.4707661F;
-  } else if (Integrator < -12.4707661F) {
-    rtb_DeadZone = -12.4707661F;
+  if (Integrator > 6.23538303F) {
+    rtb_DeadZone = 6.23538303F;
+  } else if (Integrator < -6.23538303F) {
+    rtb_DeadZone = -6.23538303F;
   } else {
     rtb_DeadZone = Integrator;
   }
@@ -702,10 +702,10 @@ void FOC_step(void)
   rtb_Sum1_n = rtb_Sum_m * 0.26F + rtDW.Integrator_DSTATE_g;
 
   /* Saturate: '<S110>/Saturation' */
-  if (rtb_Sum1_n > 12.4707661F) {
-    rtb_Gain_h = 12.4707661F;
-  } else if (rtb_Sum1_n < -12.4707661F) {
-    rtb_Gain_h = -12.4707661F;
+  if (rtb_Sum1_n > 6.23538303F) {
+    rtb_Gain_h = 6.23538303F;
+  } else if (rtb_Sum1_n < -6.23538303F) {
+    rtb_Gain_h = -6.23538303F;
   } else {
     rtb_Gain_h = rtb_Sum1_n;
   }
@@ -723,12 +723,12 @@ void FOC_step(void)
   rtb_TrigonometricFunction1 *= rtb_Gain_h;
 
   /* DeadZone: '<S43>/DeadZone' */
-  if (Integrator > 12.4707661F) {
-    Integrator -= 12.4707661F;
-  } else if (Integrator >= -12.4707661F) {
+  if (Integrator > 6.23538303F) {
+    Integrator -= 6.23538303F;
+  } else if (Integrator >= -6.23538303F) {
     Integrator = 0.0F;
   } else {
-    Integrator -= -12.4707661F;
+    Integrator -= -6.23538303F;
   }
 
   /* End of DeadZone: '<S43>/DeadZone' */
@@ -739,12 +739,12 @@ void FOC_step(void)
   rtb_IProdOut = (int16_T)floorf(rtb_Sum1_a * 35.0F);
 
   /* DeadZone: '<S95>/DeadZone' */
-  if (rtb_Sum1_n > 12.4707661F) {
-    rtb_Sum1_n -= 12.4707661F;
-  } else if (rtb_Sum1_n >= -12.4707661F) {
+  if (rtb_Sum1_n > 6.23538303F) {
+    rtb_Sum1_n -= 6.23538303F;
+  } else if (rtb_Sum1_n >= -6.23538303F) {
     rtb_Sum1_n = 0.0F;
   } else {
-    rtb_Sum1_n -= -12.4707661F;
+    rtb_Sum1_n -= -6.23538303F;
   }
 
   /* End of DeadZone: '<S95>/DeadZone' */
