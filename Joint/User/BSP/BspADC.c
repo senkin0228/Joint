@@ -13,6 +13,7 @@
 #include "BspCommUsart.h"
 #include "BspTIM.h"
 #include "Drv_AS5600.h"
+#include "math.h"
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
@@ -37,6 +38,8 @@ float IB_Offset = 0.0f;
 float IC_Offset = 0.0f;
 float Ia, Ib, Ic;
 //static uint8_t ADC_DMA_Buffer[SNS_ADC1_CH_NUM];
+float ref_Angle,Usr_Angle;
+float ref_out, actual_out;
 
 void BspAdcInit(void)
 {
@@ -53,6 +56,43 @@ void BspAdcInit(void)
 	__HAL_ADC_CLEAR_FLAG( &hadc2, ADC_FLAG_JEOC);
     HAL_ADCEx_InjectedStart_IT(&hadc1);
 	HAL_ADCEx_InjectedStart(&hadc2);    
+}
+
+float normalize_angle_error(float ref, float actual) {
+    float error = ref - actual;
+    
+    // 将差值规范到[-180, 180)
+    while (error > 180.0f) error -= 360.0f;
+    while (error <= -180.0f) error += 360.0f;
+    
+    return error;
+}
+
+// 包装函数，将处理后的误差转换为角度输入
+void preprocess_angles(float *ref_out, float *actual_out, float ref_in, float actual_in) {
+    float error = normalize_angle_error(ref_in, actual_in);
+    
+    // 保持参考角度不变，调整实际角度使其与参考角度的差等于规范化后的误差
+    *ref_out = ref_in;
+    *actual_out = ref_in - error;
+    
+    // 确保输出在[-180, 180)范围内
+    if (*actual_out > 180.0f) *actual_out -= 360.0f;
+    else if (*actual_out <= -180.0f) *actual_out += 360.0f;
+}
+
+// 防止输入值大于180或者小于-180
+float ChangeUsrAngle(float angle)
+{
+    if(angle > 180.0f)
+    {
+        angle = angle - 360.0f;
+    }
+    else if(angle < -180.0f)
+    {
+        angle = angle + 360.0f;
+    }
+    return angle;
 }
 
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
@@ -100,6 +140,10 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 			rtU.Real_Theta = HallTheta;
 			rtU.SpeedFd = HallSpeed;
             rtU.MechAngle = RealAngle;
+            ref_Angle = ChangeUsrAngle(Usr_Angle);
+            double diff = ref_Angle - RealAngle;
+            rtU.AngleRef = ref_Angle - 360.0 * floor((diff + 180.0) / 360.0);
+            rtU.AngleRef = ref_Angle;
 			//HallSpeedtest = alpha * HallSpeed + (1 - alpha) * HallSpeedLast;
 			
 			adc1_in1 = hadc1.Instance->JDR1;

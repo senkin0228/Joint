@@ -10,7 +10,7 @@
 #include "BspTIM.h"
 #include "tim.h"
 #include "Drv_AS5600.h"
-
+#include <math.h> 
 extern TIM_HandleTypeDef htim1;
 extern float g_FloatTxData[12];
 
@@ -19,6 +19,7 @@ float HallThetaAdd = 0;
 float HallTheta = 0;
 float HallTheta_Last = 0;
 float HallSpeed = 0;
+float readRealAngle;
 float RealAngle = 0;
 float HallSpeedLast = 0;
 float HallSpeedtest = 0;
@@ -91,6 +92,18 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
    */
 }
 
+float normalize_angle(float encoder_angle) {
+    // 方法1：循环归一化
+    float angle = fmod(encoder_angle, 360.0f);
+    if (angle > 180.0f) {
+        return angle - 360.0f;
+    }
+    if (angle < -180.0f) {
+        return angle + 360.0f;
+    }
+    return angle;
+}
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     float Pn = 7.0f; // pole pairs
@@ -99,7 +112,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         float d_theta;
         AS5600_ReadAngle((uint16_t*)&ReadAngle);
         HallTheta_Last = HallTheta;
-        RealAngle = (float)(4096 - ReadAngle) / 4096.0f * 360.0f;
+        readRealAngle = (float)(4096 - ReadAngle) / 4096.0f * 360.0f;
+        RealAngle = normalize_angle(readRealAngle);
         HallTheta = ((float)(((4096 - ReadAngle) * (uint16_t)Pn) % 4096)) / 4096.0f * 2.0f * PI;
         d_theta = HallTheta - HallTheta_Last;
         if(d_theta < -PI)
