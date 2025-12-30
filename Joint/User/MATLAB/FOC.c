@@ -519,7 +519,7 @@ void FOC_step(void)
       } else if (rtU.Motor_OnOff == 0.0F) {
         rtDW.is_c3_FOC = IN_IDLE;
       } else {
-        rtDW.Motor_state = 2.0;
+        rtDW.Motor_state = 4.0;
       }
       break;
 
@@ -528,7 +528,7 @@ void FOC_step(void)
         rtDW.temporalCounter_i1 = 0U;
         rtDW.is_c3_FOC = IN_AlignStage;
       } else {
-        rtDW.Motor_state = 1.0;
+        rtDW.Motor_state = 4.0;
       }
       break;
 
@@ -538,7 +538,7 @@ void FOC_step(void)
       } else if (rtU.Motor_OnOff == 0.0F) {
         rtDW.is_c3_FOC = IN_IDLE;
       } else {
-        rtDW.Motor_state = 3.0;
+        rtDW.Motor_state = 4.0;
       }
       break;
 

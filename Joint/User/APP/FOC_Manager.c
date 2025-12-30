@@ -24,7 +24,7 @@ extern ExtU rtU;
 void FOC_Manager_Init(void)
 {
 	rtU.Motor_OnOff = 0;
-    rtU.SpeedRef = 400;
+    rtU.SpeedRef = 1200;
 }
 
 
@@ -38,22 +38,22 @@ void FOC_Manager_Process(uint16_t TaskTick)
     Vpoten = HAL_ADC_GetValue(&hadc1);
     adc_vbus = HAL_ADC_GetValue(&hadc2);
 	rtU.v_bus = ((float)adc_vbus)*3.3f/4096.0f*26.0f;
-    if(rtU.Motor_OnOff == 1) {
-        SpeedRefTick+=10;
-        if(SpeedRefTick == 5000) {
-            rtU.SpeedRef = 400;
-        } else if(SpeedRefTick == 20000) {
-            rtU.SpeedRef = 600;
-        }else if(SpeedRefTick == 30000) {
-            rtU.SpeedRef = 800;
-        }else if(SpeedRefTick >= 30000) {
-            SpeedRefTick = 30000;
-        }
-        
-    } else {
-        SpeedRefTick = 0;
-        rtU.SpeedRef = 400;
-    }
+//    if(rtU.Motor_OnOff == 1) {
+//        SpeedRefTick+=10;
+//        if(SpeedRefTick == 5000) {
+//            rtU.SpeedRef = 400;
+//        } else if(SpeedRefTick == 20000) {
+//            rtU.SpeedRef = 600;
+//        }else if(SpeedRefTick == 30000) {
+//            rtU.SpeedRef = 800;
+//        }else if(SpeedRefTick >= 30000) {
+//            SpeedRefTick = 30000;
+//        }
+//        
+//    } else {
+//        SpeedRefTick = 0;
+//        rtU.SpeedRef = 400;
+//    }
 }
 
 
