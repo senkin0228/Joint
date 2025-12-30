@@ -24,7 +24,7 @@ extern ExtU rtU;
 void FOC_Manager_Init(void)
 {
 	rtU.Motor_OnOff = 0;
-    rtU.SpeedRef = 400;
+    rtU.AngleRef = 180;
 }
 
 

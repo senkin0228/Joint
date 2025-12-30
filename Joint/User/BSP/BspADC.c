@@ -29,6 +29,7 @@ extern float HallSpeedLast;
 extern float HallSpeedtest;
 extern float alpha;
 extern uint8_t HallReadTemp;
+extern float RealAngle;
 
 float ADCIN[3];
 float IA_Offset = 0.0f;
@@ -98,6 +99,7 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 //			}
 			rtU.Real_Theta = HallTheta;
 			rtU.SpeedFd = HallSpeed;
+            rtU.MechAngle = RealAngle;
 			//HallSpeedtest = alpha * HallSpeed + (1 - alpha) * HallSpeedLast;
 			
 			adc1_in1 = hadc1.Instance->JDR1;
@@ -112,7 +114,7 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 			TIM1->CCR3 = rtY.tABC[2];
             g_FloatTxData[0] = rtU.Real_Theta;
             g_FloatTxData[1] = rtU.SpeedFd;
-            g_FloatTxData[2] = rtU.SpeedRef;
+            g_FloatTxData[2] = rtU.AngleRef;
             g_FloatTxData[3] = rtU.v_bus;
             g_FloatTxData[4] = rtDW.is_c3_FOC;
             BspUartSendJustFloatData(UsartInstance3, g_FloatTxData, 10);

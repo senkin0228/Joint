@@ -19,6 +19,7 @@ float HallThetaAdd = 0;
 float HallTheta = 0;
 float HallTheta_Last = 0;
 float HallSpeed = 0;
+float RealAngle = 0;
 float HallSpeedLast = 0;
 float HallSpeedtest = 0;
 float alpha = 0.3;
@@ -98,6 +99,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         float d_theta;
         AS5600_ReadAngle((uint16_t*)&ReadAngle);
         HallTheta_Last = HallTheta;
+        RealAngle = (float)(4096 - ReadAngle) / 4096.0f * 360.0f;
         HallTheta = ((float)(((4096 - ReadAngle) * (uint16_t)Pn) % 4096)) / 4096.0f * 2.0f * PI;
         d_theta = HallTheta - HallTheta_Last;
         if(d_theta < -PI)

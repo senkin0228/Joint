@@ -120,7 +120,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>?</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -253,7 +252,7 @@
         <Ww>
           <count>18</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rtU.SpeedRef</ItemText>
+          <ItemText>rtU.AngleRef</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
