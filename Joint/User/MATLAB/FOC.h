@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'FOC'.
  *
- * Model version                  : 1.230
+ * Model version                  : 1.232
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Dec 25 10:32:52 2025
+ * C/C++ source code generated on : Tue Dec 30 14:19:31 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -107,6 +107,7 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S10>/Gain' : Unused code path elimination
  * Block '<S11>/Scope4' : Unused code path elimination
  * Block '<S2>/Scope' : Unused code path elimination
  * Block '<S2>/Scope1' : Unused code path elimination

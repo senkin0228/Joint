@@ -92,12 +92,13 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+    float Pn = 7.0f; // pole pairs
     if(htim->Instance == TIM2)
     {
         float d_theta;
         AS5600_ReadAngle((uint16_t*)&ReadAngle);
         HallTheta_Last = HallTheta;
-        HallTheta = ((float)(((4096 - ReadAngle) * 11) % 4096)) / 4096.0f * 2.0f * PI;
+        HallTheta = ((float)(((4096 - ReadAngle) * (uint16_t)Pn) % 4096)) / 4096.0f * 2.0f * PI;
         d_theta = HallTheta - HallTheta_Last;
         if(d_theta < -PI)
         {
@@ -107,7 +108,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         {
             d_theta -= 2.0f*PI;
         }
-        HallSpeedtest = d_theta*2000.0f*60.0f/(2.0f*PI)/11.0f;
+        HallSpeedtest = d_theta*2000.0f*60.0f/(2.0f*PI)/Pn;
         HallSpeed = alpha * HallSpeedtest + (1.0f - alpha) * HallSpeed;
 
     }else if (htim->Instance == TIM7) {

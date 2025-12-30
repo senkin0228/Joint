@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'FOC'.
  *
- * Model version                  : 1.230
+ * Model version                  : 1.232
  * Simulink Coder version         : 24.1 (R2024a) 19-Nov-2023
- * C/C++ source code generated on : Thu Dec 25 10:32:52 2025
+ * C/C++ source code generated on : Tue Dec 30 14:19:31 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex-M
@@ -436,7 +436,7 @@ void FOC_step(void)
     /* End of Saturate: '<S165>/Saturation' */
 
     /* Gain: '<S155>/Integral Gain' */
-    rtb_IntegralGain *= 0.0144F;
+    rtb_IntegralGain *= 0.1144F;
 
     /* Update for DiscreteIntegrator: '<S158>/Integrator' */
     rtDW.Integrator_SYSTEM_ENABLE = 0U;
@@ -620,7 +620,7 @@ void FOC_step(void)
       rtDW.DiscreteTimeIntegrator_DSTATE;
 
     /* Update for DiscreteIntegrator: '<S9>/Discrete-Time Integrator' */
-    rtDW.DiscreteTimeIntegrator_DSTATE += 0.0153588969F;
+    rtDW.DiscreteTimeIntegrator_DSTATE += 0.00977384299F;
 
     /* End of Outputs for SubSystem: '<S2>/If Action Subsystem2' */
     break;
@@ -673,7 +673,7 @@ void FOC_step(void)
    *  DiscreteIntegrator: '<S51>/Integrator'
    *  Product: '<S56>/PProd Out'
    */
-  Integrator = rtb_Sum1_a * 0.26F + (real32_T)rtDW.Integrator_DSTATE_a * 0.0001F;
+  Integrator = rtb_Sum1_a * 0.08F + (real32_T)rtDW.Integrator_DSTATE_a * 0.0001F;
 
   /* Saturate: '<S58>/Saturation' */
   if (Integrator > 6.23538303F) {
@@ -699,7 +699,7 @@ void FOC_step(void)
    *  DiscreteIntegrator: '<S103>/Integrator'
    *  Product: '<S108>/PProd Out'
    */
-  rtb_Sum1_n = rtb_Sum_m * 0.26F + rtDW.Integrator_DSTATE_g;
+  rtb_Sum1_n = rtb_Sum_m * 0.08F + rtDW.Integrator_DSTATE_g;
 
   /* Saturate: '<S110>/Saturation' */
   if (rtb_Sum1_n > 6.23538303F) {
@@ -736,7 +736,7 @@ void FOC_step(void)
   /* Product: '<S48>/IProd Out' incorporates:
    *  Constant: '<S11>/Constant4'
    */
-  rtb_IProdOut = (int16_T)floorf(rtb_Sum1_a * 35.0F);
+  rtb_IProdOut = (int16_T)floorf(rtb_Sum1_a * 13.0F);
 
   /* DeadZone: '<S95>/DeadZone' */
   if (rtb_Sum1_n > 6.23538303F) {
@@ -752,7 +752,7 @@ void FOC_step(void)
   /* Product: '<S100>/IProd Out' incorporates:
    *  Constant: '<S11>/Constant2'
    */
-  rtb_Sum_m *= 35.0F;
+  rtb_Sum_m *= 13.0F;
 
   /* Switch: '<S93>/Switch1' incorporates:
    *  Constant: '<S93>/Clamping_zero'
