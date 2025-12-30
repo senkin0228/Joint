@@ -39,6 +39,7 @@ float IC_Offset = 0.0f;
 float Ia, Ib, Ic;
 //static uint8_t ADC_DMA_Buffer[SNS_ADC1_CH_NUM];
 float ref_Angle,Usr_Angle;
+float Rel_Angle = 0.0f;
 float ref_out, actual_out;
 
 void BspAdcInit(void)
@@ -140,10 +141,44 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 			rtU.Real_Theta = HallTheta;
 			rtU.SpeedFd = HallSpeed;
             rtU.MechAngle = RealAngle;
-            ref_Angle = ChangeUsrAngle(Usr_Angle);
-            double diff = ref_Angle - RealAngle;
-            rtU.AngleRef = ref_Angle - 360.0 * floor((diff + 180.0) / 360.0);
-            rtU.AngleRef = ref_Angle;
+            
+            static float RealAngle_Prev = 0;
+            static float RealAngle_Unwrapped = 0;
+            static float Target_Unwrapped = 0;
+            static float Usr_Angle_Prev = 0;
+            static uint8_t first_run = 1;
+
+            if (first_run) {
+                RealAngle_Prev = RealAngle;
+                RealAngle_Unwrapped = RealAngle;
+                Target_Unwrapped = RealAngle;
+                Usr_Angle_Prev = Usr_Angle;
+                first_run = 0;
+            }
+
+            float d_angle = RealAngle - RealAngle_Prev;
+            if (d_angle > 180.0f) d_angle -= 360.0f;
+            else if (d_angle < -180.0f) d_angle += 360.0f;
+            RealAngle_Unwrapped += d_angle;
+            RealAngle_Prev = RealAngle;
+
+            if (Rel_Angle != 0.0f) {
+                Target_Unwrapped += Rel_Angle;
+                Rel_Angle = 0.0f;
+                float new_usr = fmodf(Target_Unwrapped, 360.0f);
+                Usr_Angle = ChangeUsrAngle(new_usr);
+                Usr_Angle_Prev = Usr_Angle;
+            }
+            else if (Usr_Angle != Usr_Angle_Prev) {
+                float diff = Usr_Angle - Target_Unwrapped;
+                while (diff > 180.0f) diff -= 360.0f;
+                while (diff <= -180.0f) diff += 360.0f;
+                Target_Unwrapped += diff;
+                Usr_Angle_Prev = Usr_Angle;
+            }
+
+            float error = Target_Unwrapped - RealAngle_Unwrapped;
+            rtU.AngleRef = RealAngle + error;
 			//HallSpeedtest = alpha * HallSpeed + (1 - alpha) * HallSpeedLast;
 			
 			adc1_in1 = hadc1.Instance->JDR1;
